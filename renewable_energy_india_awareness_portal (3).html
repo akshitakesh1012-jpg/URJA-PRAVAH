@@ -1,0 +1,2387 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renewable Energy India | Sustainable Development, Progress & Challenges</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <!-- Google Fonts: Space Grotesk & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            void: {
+              950: '#030708',
+              900: '#060d10',
+              850: '#0a1419',
+              800: '#0f1d24',
+              700: '#172c36',
+              600: '#23414f'
+            },
+            light: {
+              bg: '#f8fafc',
+              surface: '#ffffff',
+              muted: '#f1f5f9',
+              border: '#e2e8f0',
+              text: '#0f172a',
+              subtext: '#475569'
+            },
+            cyan: {
+              neon: '#00f0ff',
+              light: '#0284c7',
+              glow: '#38f9d7',
+              dark: '#00838f'
+            },
+            emerald: {
+              neon: '#10b981',
+              bright: '#00ff88',
+              light: '#059669',
+              glow: '#05e67a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Theme transitions */
+    html, body {
+      transition: background-color 0.3s ease, color 0.3s ease;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Dark Mode Defaults */
+    html.dark body {
+      background-color: #030708;
+      color: #e2e8f0;
+    }
+    /* Day / Light Mode Defaults */
+    html:not(.dark) body {
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+
+    /* Adaptive Glass Cards */
+    .glass-panel {
+      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    html.dark .glass-panel {
+      background: rgba(10, 20, 25, 0.75);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(0, 240, 255, 0.14);
+    }
+    html:not(.dark) .glass-panel {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+    }
+
+    /* Sub-panels and inner wells */
+    html.dark .inner-well {
+      background-color: #060d10;
+      border-color: #0f1d24;
+    }
+    html:not(.dark) .inner-well {
+      background-color: #f1f5f9;
+      border-color: #e2e8f0;
+    }
+
+    /* Card Hovers */
+    html.dark .glass-card-hover:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 240, 255, 0.45);
+      box-shadow: 0 16px 36px -10px rgba(0, 240, 255, 0.18);
+    }
+    html:not(.dark) .glass-card-hover:hover {
+      transform: translateY(-4px);
+      border-color: rgba(2, 132, 199, 0.45);
+      box-shadow: 0 16px 36px -10px rgba(2, 132, 199, 0.12);
+    }
+
+    /* Dual Gradient Text */
+    html.dark .gradient-text-accent {
+      background: linear-gradient(135deg, #00f0ff 0%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    html:not(.dark) .gradient-text-accent {
+      background: linear-gradient(135deg, #0284c7 0%, #059669 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Adaptive Text Colors */
+    html.dark .text-adaptive-head { color: #ffffff; }
+    html:not(.dark) .text-adaptive-head { color: #0f172a; }
+
+    html.dark .text-adaptive-body { color: #cbd5e1; }
+    html:not(.dark) .text-adaptive-body { color: #334155; }
+
+    html.dark .text-adaptive-muted { color: #94a3b8; }
+    html:not(.dark) .text-adaptive-muted { color: #64748b; }
+
+    /* Image zoom container */
+    .img-zoom-wrap {
+      overflow: hidden;
+      border-radius: 1rem;
+      position: relative;
+    }
+    .img-zoom {
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+    }
+    .img-zoom-wrap:hover .img-zoom {
+      transform: scale(1.05);
+    }
+
+    /* Range slider custom styling */
+    input[type=range] {
+      -webkit-appearance: none;
+      border-radius: 9999px;
+      height: 8px;
+    }
+    html.dark input[type=range] {
+      background: #0f1d24;
+    }
+    html:not(.dark) input[type=range] {
+      background: #cbd5e1;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 22px;
+      width: 22px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid white;
+      transition: transform 0.15s ease;
+    }
+    html.dark input[type=range]::-webkit-slider-thumb {
+      background: #00f0ff;
+      box-shadow: 0 0 12px #00f0ff;
+      border-color: #030708;
+    }
+    html:not(.dark) input[type=range]::-webkit-slider-thumb {
+      background: #0284c7;
+      box-shadow: 0 0 10px rgba(2, 132, 199, 0.5);
+      border-color: #ffffff;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    /* Star rating active colors */
+    .star-btn.active {
+      color: #f59e0b;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 7px; }
+    html.dark ::-webkit-scrollbar-track { background: #030708; }
+    html:not(.dark) ::-webkit-scrollbar-track { background: #f1f5f9; }
+    html.dark ::-webkit-scrollbar-thumb { background: #172c36; border-radius: 4px; }
+    html:not(.dark) ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+  </style>
+</head>
+<body class="selection:bg-cyan-500 selection:text-white">
+
+  <!-- Ambient dynamic particle canvas -->
+  <canvas id="ambientCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+  <!-- NAVIGATION -->
+  <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b transition-colors duration-300 dark:bg-void-950/85 dark:border-void-800 bg-white/85 border-slate-200" id="mainNavbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Brand -->
+        <a href="#hero" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center transition-transform group-hover:scale-105 dark:bg-void-900 dark:border dark:border-cyan-neon/40 dark:text-cyan-neon dark:shadow-[0_0_15px_rgba(0,240,255,0.3)] bg-cyan-50 border border-cyan-200 text-cyan-600 shadow-sm">
+            <i data-lucide="zap" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <div class="font-display font-extrabold text-lg tracking-tight flex items-center gap-1.5 text-adaptive-head">
+              Urja<span class="gradient-text-accent">Pravah</span>
+              <span class="text-[9px] px-2 py-0.5 rounded font-mono font-bold tracking-normal uppercase dark:bg-cyan-950 dark:border dark:border-cyan-neon/40 dark:text-cyan-neon bg-cyan-100 border border-cyan-300 text-cyan-800">India 2030</span>
+            </div>
+            <div class="text-[10px] text-adaptive-muted font-mono tracking-wider uppercase">National Renewable Intelligence</div>
+          </div>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden xl:flex items-center space-x-5 text-[11px] font-semibold uppercase tracking-wider text-adaptive-body">
+          <a href="#resources" class="hover:text-cyan-500 transition-colors">Resources</a>
+          <a href="#causes-effects" class="hover:text-cyan-500 transition-colors">Causes & Effects</a>
+          <a href="#exploitation" class="hover:text-rose-500 transition-colors">Dark Trade-offs</a>
+          <a href="#india-progress" class="hover:text-emerald-500 transition-colors">India Progress</a>
+          <a href="#how-to-go-renewable" class="hover:text-cyan-500 text-cyan-600 dark:text-cyan-neon transition-colors font-bold">How To Adopt</a>
+          <a href="#feedback-wall" class="hover:text-emerald-500 transition-colors">Citizen Voices</a>
+          <a href="#calculator" class="hover:text-cyan-500 transition-colors">Solar Tool</a>
+          <a href="#quiz" class="hover:text-cyan-500 transition-colors">Energy IQ</a>
+        </div>
+
+        <!-- Right Controls: Theme Switcher & Pledge CTA -->
+        <div class="flex items-center space-x-3">
+          
+          <!-- DUAL DAY / NIGHT MODE TOGGLE BUTTON -->
+          <button id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle Day and Night Mode" class="p-2.5 rounded-xl border transition-all flex items-center justify-center dark:bg-void-900 dark:border-void-700 dark:text-yellow-400 dark:hover:border-cyan-neon bg-slate-100 border-slate-300 text-slate-700 hover:border-slate-400 shadow-sm" title="Switch Theme">
+            <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+            <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+          </button>
+
+          <!-- Citizen Pledge CTA -->
+          <a href="#pledge" class="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-xl font-display font-bold text-xs uppercase tracking-wider transition-all dark:bg-gradient-to-r dark:from-cyan-neon dark:to-emerald-neon dark:text-void-950 dark:shadow-[0_0_20px_rgba(0,240,255,0.35)] bg-gradient-to-r from-cyan-600 to-emerald-600 text-white shadow-md hover:opacity-95">
+            <i data-lucide="award" class="w-4 h-4"></i>
+            <span>Citizen Pledge</span>
+          </a>
+
+          <!-- Mobile Hamburger -->
+          <button id="mobileNavToggle" aria-label="Toggle mobile menu" class="xl:hidden p-2 rounded-xl border dark:text-slate-300 dark:border-void-700 dark:hover:bg-void-900 text-slate-700 border-slate-300 hover:bg-slate-100">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden xl:hidden border-b px-6 py-5 space-y-3 font-medium text-sm dark:bg-void-950 dark:border-void-800 bg-white border-slate-200">
+      <a href="#resources" class="mobile-item block py-1.5 text-adaptive-body hover:text-cyan-500">Resources Deep Dive</a>
+      <a href="#causes-effects" class="mobile-item block py-1.5 text-adaptive-body hover:text-cyan-500">Causes & Direct Effects</a>
+      <a href="#exploitation" class="mobile-item block py-1.5 text-adaptive-body hover:text-rose-500">Ecological Trade-offs & Exploitation</a>
+      <a href="#india-progress" class="mobile-item block py-1.5 text-adaptive-body hover:text-emerald-500">India's Milestones (500 GW)</a>
+      <a href="#how-to-go-renewable" class="mobile-item block py-1.5 text-cyan-500 font-bold">How To Adopt Renewable Energy</a>
+      <a href="#feedback-wall" class="mobile-item block py-1.5 text-adaptive-body hover:text-emerald-500">Citizen Experience Wall & Feedback</a>
+      <a href="#calculator" class="mobile-item block py-1.5 text-adaptive-body hover:text-cyan-500">Solar Savings Calculator</a>
+      <a href="#quiz" class="mobile-item block py-1.5 text-adaptive-body hover:text-cyan-500">Clean Energy IQ Quiz</a>
+      <a href="#pledge" class="mobile-item block text-center py-2.5 rounded-xl font-bold uppercase text-xs dark:bg-gradient-to-r dark:from-cyan-neon dark:to-emerald-neon dark:text-void-950 bg-cyan-600 text-white">Sign Climate Charter</a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header id="hero" class="relative pt-32 sm:pt-44 pb-20 sm:pb-32 overflow-hidden border-b dark:border-void-800 border-slate-200">
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] rounded-full blur-[140px] pointer-events-none dark:bg-gradient-to-r dark:from-cyan-neon/15 dark:to-emerald-neon/15 bg-gradient-to-r from-cyan-400/20 to-emerald-400/20"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Content -->
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-mono mb-6 border dark:bg-void-900/80 dark:border-cyan-neon/30 dark:text-cyan-neon bg-cyan-50 border-cyan-200 text-cyan-700">
+            <span class="w-2 h-2 rounded-full animate-ping dark:bg-cyan-neon bg-cyan-600"></span>
+            <span>UN SDG 7 (Affordable Clean Energy) & COP26 Panchamrit</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-6xl font-display font-extrabold tracking-tight leading-[1.08] mb-6 text-adaptive-head">
+            Powering Sustainable Sovereignty: <span class="gradient-text-accent">Renewables</span>, India’s Odyssey & Critical Realities.
+          </h1>
+
+          <p class="text-base sm:text-lg leading-relaxed font-normal mb-8 max-w-2xl text-adaptive-body">
+            An exhaustive national inquiry analyzing the physics of clean power, systemic drivers of decarbonization, India’s leap toward <strong class="dark:text-white text-slate-900">500 GW of non-fossil capacity</strong>, citizen adoption roadmaps, and the real feedbacks from households already powered by the sun.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="#how-to-go-renewable" class="px-7 py-3.5 rounded-xl font-display font-bold text-sm transition-all flex items-center space-x-2 dark:bg-cyan-neon dark:text-void-950 dark:hover:bg-emerald-bright dark:hover:shadow-[0_0_25px_rgba(0,255,136,0.45)] bg-cyan-600 text-white hover:bg-cyan-700 shadow-md">
+              <i data-lucide="arrow-down-circle" class="w-4 h-4"></i>
+              <span>How To Go Renewable in 4 Steps</span>
+            </a>
+            <a href="#feedback-wall" class="px-7 py-3.5 rounded-xl font-display font-semibold text-sm transition-all flex items-center space-x-2 border dark:glass-panel dark:border-emerald-neon/40 dark:text-emerald-bright dark:hover:border-emerald-neon dark:hover:bg-void-900 bg-white border-emerald-300 text-emerald-700 hover:bg-emerald-50 shadow-sm">
+              <i data-lucide="message-square" class="w-4 h-4"></i>
+              <span>Read Citizen Feedbacks</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Hero Visual Box -->
+        <div class="lg:col-span-5">
+          <div class="glass-panel p-3.5 rounded-3xl relative shadow-2xl border dark:border-cyan-neon/30 border-slate-200">
+            <div class="img-zoom-wrap h-80 sm:h-96 relative bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80" 
+                   alt="Bhadla Solar Park Rajasthan Desert PV Array" 
+                   onerror="handleImgError(this, 'solar-desert');"
+                   class="w-full h-full object-cover img-zoom">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent flex flex-col justify-end p-6 pointer-events-none">
+                <span class="text-[11px] font-mono font-bold uppercase tracking-widest text-cyan-400">Rajasthan • Bhadla Mega Solar Array</span>
+                <h3 class="text-lg font-display font-bold text-white mt-1">2,245 MW Peak Clean Photovoltaic Generation</h3>
+                <p class="text-xs text-slate-200 mt-1 line-clamp-2">World-class mega-cluster in the Thar desert offsetting ~4 million tons of CO₂ annually while powering millions of homes.</p>
+              </div>
+            </div>
+            
+            <!-- Floating Badge -->
+            <div class="absolute -bottom-4 -left-4 glass-panel border px-4 py-2.5 rounded-2xl flex items-center space-x-3 shadow-xl dark:border-emerald-neon/50 border-emerald-400 bg-white/90 dark:bg-void-900/90">
+              <div class="w-3 h-3 rounded-full animate-pulse dark:bg-emerald-bright bg-emerald-500"></div>
+              <div>
+                <div class="text-[11px] font-mono font-bold dark:text-emerald-bright text-emerald-700">200+ GW MILESTONE</div>
+                <div class="text-[10px] text-adaptive-muted">Non-Fossil Capacity Achieved</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Metrics Counter Ribbon -->
+      <div class="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div class="glass-panel p-5 rounded-2xl border-l-4 dark:border-l-cyan-neon border-l-cyan-600 glass-card-hover">
+          <div class="text-3xl sm:text-4xl font-display font-extrabold dark:text-cyan-neon text-cyan-600 counter" data-target="205">0</div>
+          <div class="text-xs font-semibold text-adaptive-head mt-1">Non-Fossil Capacity (GW)</div>
+          <div class="text-[11px] text-adaptive-muted mt-1 font-mono">4th Globally in Renewable Power</div>
+        </div>
+        <div class="glass-panel p-5 rounded-2xl border-l-4 dark:border-l-emerald-neon border-l-emerald-600 glass-card-hover">
+          <div class="text-3xl sm:text-4xl font-display font-extrabold dark:text-emerald-bright text-emerald-600 counter" data-target="500">0</div>
+          <div class="text-xs font-semibold text-adaptive-head mt-1">2030 National Target (GW)</div>
+          <div class="text-[11px] text-adaptive-muted mt-1 font-mono">Panchamrit COP26 Commitment</div>
+        </div>
+        <div class="glass-panel p-5 rounded-2xl border-l-4 dark:border-l-cyan-neon border-l-cyan-600 glass-card-hover">
+          <div class="text-3xl sm:text-4xl font-display font-extrabold text-adaptive-head">₹75,021<span class="text-sm font-normal dark:text-cyan-neon text-cyan-600"> Cr</span></div>
+          <div class="text-xs font-semibold text-adaptive-head mt-1">PM Surya Ghar Outlay</div>
+          <div class="text-[11px] text-adaptive-muted mt-1 font-mono">10M Rooftop Households</div>
+        </div>
+        <div class="glass-panel p-5 rounded-2xl border-l-4 dark:border-l-emerald-neon border-l-emerald-600 glass-card-hover">
+          <div class="text-3xl sm:text-4xl font-display font-extrabold dark:text-emerald-bright text-emerald-600">2070</div>
+          <div class="text-xs font-semibold text-adaptive-head mt-1">Net-Zero GHG Horizon</div>
+          <div class="text-[11px] text-adaptive-muted mt-1 font-mono">LT-LEDS Decarbonization Roadmap</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3-WAY PERSPECTIVE SWITCHER RIBBON -->
+  <section class="py-10 border-b dark:bg-void-900 dark:border-void-800 bg-slate-100 border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <span class="text-xs font-mono font-bold uppercase tracking-widest dark:text-cyan-neon text-cyan-600">Perspective Switcher</span>
+          <h2 class="text-2xl font-display font-bold text-adaptive-head">Multidimensional Energy Inquiry</h2>
+        </div>
+
+        <!-- 3-Way Mode Switch Buttons -->
+        <div class="inline-flex p-1.5 rounded-2xl border inner-well shadow-inner flex-wrap justify-center">
+          <button onclick="switchView('resources')" id="viewBtn-resources" class="view-btn active px-4 sm:px-6 py-2.5 rounded-xl text-xs font-display font-bold uppercase tracking-wider transition-all dark:bg-gradient-to-r dark:from-cyan-neon dark:to-emerald-neon dark:text-void-950 bg-cyan-600 text-white shadow-sm">
+            1. Resources Deep-Dive
+          </button>
+          <button onclick="switchView('causes-effects')" id="viewBtn-causes-effects" class="view-btn px-4 sm:px-6 py-2.5 rounded-xl text-xs font-display font-bold uppercase tracking-wider text-adaptive-muted hover:text-adaptive-head transition-all">
+            2. Causes & Direct Effects
+          </button>
+          <button onclick="switchView('exploitation')" id="viewBtn-exploitation" class="view-btn px-4 sm:px-6 py-2.5 rounded-xl text-xs font-display font-bold uppercase tracking-wider text-adaptive-muted hover:text-adaptive-head transition-all">
+            3. Dark Realities & Exploitation
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW FEATURE 1: HOW TO GO RENEWABLE (4 SIMPLE CITIZEN STEPS) -->
+  <section id="how-to-go-renewable" class="py-20 border-b dark:bg-void-900/50 dark:border-void-800 bg-slate-50 border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest dark:text-cyan-neon text-cyan-600 mb-2">
+          <i data-lucide="compass" class="w-4 h-4"></i>
+          <span>Practical Citizen Playbook</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-adaptive-head">
+          How to Go Renewable: 4 Simple Steps
+        </h2>
+        <p class="text-adaptive-body mt-4 text-sm sm:text-base">
+          Clean energy is no longer just for massive utility corporations. Whether you are an independent homeowner, an apartment tenant, a farmer, or a shop owner, here is how you can transition easily with direct Indian government subsidies.
+        </p>
+      </div>
+
+      <!-- 4-Step Interactive Process Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        
+        <!-- Step 1 -->
+        <div class="glass-panel p-6 sm:p-7 rounded-3xl border flex flex-col justify-between glass-card-hover relative overflow-hidden dark:border-cyan-neon/20 border-slate-300">
+          <div class="absolute -right-4 -bottom-4 text-7xl font-display font-black opacity-5 dark:text-cyan-neon text-cyan-600">01</div>
+          <div>
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center font-mono font-bold text-lg mb-5 dark:bg-cyan-950 dark:border dark:border-cyan-neon/50 dark:text-cyan-neon bg-cyan-100 border border-cyan-300 text-cyan-800 shadow-sm">
+              01
+            </div>
+            <span class="text-[11px] font-mono font-bold uppercase tracking-wider dark:text-cyan-neon text-cyan-600">Audit & Sizing</span>
+            <h3 class="text-lg font-display font-bold text-adaptive-head mt-1 mb-2">Assess Roof & Monthly Load</h3>
+            <p class="text-xs sm:text-sm text-adaptive-body leading-relaxed mb-4">
+              Check your electricity bill for average monthly consumption in units (kWh). As a standard benchmark, 1 kW of rooftop solar requires ~100 sq.ft of shade-free shadowless roof area and generates ~4 units daily.
+            </p>
+          </div>
+          <div class="inner-well p-3 rounded-xl border text-[11px] font-mono text-adaptive-muted">
+            <strong class="dark:text-cyan-neon text-cyan-600">Rule of Thumb:</strong> 300 units/mo bill = 3 kW system = ~300 sq.ft rooftop.
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="glass-panel p-6 sm:p-7 rounded-3xl border flex flex-col justify-between glass-card-hover relative overflow-hidden dark:border-emerald-neon/20 border-slate-300">
+          <div class="absolute -right-4 -bottom-4 text-7xl font-display font-black opacity-5 dark:text-emerald-neon text-emerald-600">02</div>
+          <div>
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center font-mono font-bold text-lg mb-5 dark:bg-emerald-950 dark:border dark:border-emerald-neon/50 dark:text-emerald-bright bg-emerald-100 border border-emerald-300 text-emerald-800 shadow-sm">
+              02
+            </div>
+            <span class="text-[11px] font-mono font-bold uppercase tracking-wider dark:text-emerald-bright text-emerald-600">Portal Registration</span>
+            <h3 class="text-lg font-display font-bold text-adaptive-head mt-1 mb-2">Register on PM Surya Ghar</h3>
+            <p class="text-xs sm:text-sm text-adaptive-body leading-relaxed mb-4">
+              Visit <strong class="text-adaptive-head">pmsuryaghar.gov.in</strong>. Select your state and local DISCOM (e.g. TANGEDCO, UPPCL, BESCOM, Adani/Tata Power), input your Consumer CA Number, mobile number, and submit feasibility.
+            </p>
+          </div>
+          <div class="inner-well p-3 rounded-xl border text-[11px] font-mono text-adaptive-muted">
+            <strong class="dark:text-emerald-bright text-emerald-600">Subsidy Guarantee:</strong> ₹30,000 for 1 kW, ₹60,000 for 2 kW, up to ₹78,000 for 3+ kW.
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="glass-panel p-6 sm:p-7 rounded-3xl border flex flex-col justify-between glass-card-hover relative overflow-hidden dark:border-cyan-neon/20 border-slate-300">
+          <div class="absolute -right-4 -bottom-4 text-7xl font-display font-black opacity-5 dark:text-cyan-neon text-cyan-600">03</div>
+          <div>
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center font-mono font-bold text-lg mb-5 dark:bg-cyan-950 dark:border dark:border-cyan-neon/50 dark:text-cyan-neon bg-cyan-100 border border-cyan-300 text-cyan-800 shadow-sm">
+              03
+            </div>
+            <span class="text-[11px] font-mono font-bold uppercase tracking-wider dark:text-cyan-neon text-cyan-600">Empaneled Vendors</span>
+            <h3 class="text-lg font-display font-bold text-adaptive-head mt-1 mb-2">Vendor Selection & Setup</h3>
+            <p class="text-xs sm:text-sm text-adaptive-body leading-relaxed mb-4">
+              Pick an MNRE-empaneled local vendor from the portal. They supply ALMM-certified domestic mono-PERC or TOPCon bifacial panels, grid-tied inverters, surge protectors, and complete installation in 3–5 working days.
+            </p>
+          </div>
+          <div class="inner-well p-3 rounded-xl border text-[11px] font-mono text-adaptive-muted">
+            <strong class="dark:text-cyan-neon text-cyan-600">Buyer Tip:</strong> Choose vendors offering 5-year comprehensive operation & maintenance (O&M).
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="glass-panel p-6 sm:p-7 rounded-3xl border flex flex-col justify-between glass-card-hover relative overflow-hidden dark:border-emerald-neon/20 border-slate-300">
+          <div class="absolute -right-4 -bottom-4 text-7xl font-display font-black opacity-5 dark:text-emerald-neon text-emerald-600">04</div>
+          <div>
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center font-mono font-bold text-lg mb-5 dark:bg-emerald-950 dark:border dark:border-emerald-neon/50 dark:text-emerald-bright bg-emerald-100 border border-emerald-300 text-emerald-800 shadow-sm">
+              04
+            </div>
+            <span class="text-[11px] font-mono font-bold uppercase tracking-wider dark:text-emerald-bright text-emerald-600">Net-Metering & DBT</span>
+            <h3 class="text-lg font-display font-bold text-adaptive-head mt-1 mb-2">Net Metering & Bank Subsidy</h3>
+            <p class="text-xs sm:text-sm text-adaptive-body leading-relaxed mb-4">
+              Your DISCOM inspects the setup, replaces your unidirectional meter with a bi-directional smart Net Meter. The commissioning report triggers direct central bank DBT credit into your Aadhaar-linked bank account within 30 days.
+            </p>
+          </div>
+          <div class="inner-well p-3 rounded-xl border text-[11px] font-mono text-adaptive-muted">
+            <strong class="dark:text-emerald-bright text-emerald-600">Zero Electric Bills:</strong> Day surplus exports spin meter backward, offsetting evening use.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Alternative Pathways (Tenants, Farmers, Apartments) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="glass-panel p-6 rounded-2xl border dark:border-void-700 border-slate-300">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center dark:bg-void-950 dark:border dark:border-cyan-neon/40 dark:text-cyan-neon bg-cyan-100 text-cyan-700">
+              <i data-lucide="building" class="w-5 h-5"></i>
+            </div>
+            <h4 class="text-base font-display font-bold text-adaptive-head">For Tenants & Apartments</h4>
+          </div>
+          <p class="text-xs text-adaptive-body leading-relaxed mb-3">
+            Don't have individual roof rights? Propose a shared <strong>Community Solar Net-Metering</strong> system for Society common lighting, lifts, and water pumping, or purchase voluntary green power tariffs directly through your DISCOM.
+          </p>
+          <span class="text-[11px] font-mono dark:text-cyan-neon text-cyan-600">Alternative: 5-Star BEE Inverter Appliances</span>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl border dark:border-void-700 border-slate-300">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center dark:bg-void-950 dark:border dark:border-emerald-neon/40 dark:text-emerald-bright bg-emerald-100 text-emerald-700">
+              <i data-lucide="tractor" class="w-5 h-5"></i>
+            </div>
+            <h4 class="text-base font-display font-bold text-adaptive-head">For Farmers & Cultivators</h4>
+          </div>
+          <p class="text-xs text-adaptive-body leading-relaxed mb-3">
+            Leverage <strong>PM-KUSUM Scheme (Component B)</strong> to replace expensive diesel pump-sets with 90% subsidized standalone solar water pumps, or install solar arrays over barren land to sell green units to the grid under Component A.
+          </p>
+          <span class="text-[11px] font-mono dark:text-emerald-bright text-emerald-600">Subsidies: Up to 60-90% Central + State Aid</span>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl border dark:border-void-700 border-slate-300">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center dark:bg-void-950 dark:border dark:border-cyan-neon/40 dark:text-cyan-neon bg-cyan-100 text-cyan-700">
+              <i data-lucide="store" class="w-5 h-5"></i>
+            </div>
+            <h4 class="text-base font-display font-bold text-adaptive-head">For Shops & Small Enterprises</h4>
+          </div>
+          <p class="text-xs text-adaptive-body leading-relaxed mb-3">
+            Commercial tariffs in India range from ₹9 to ₹14/unit. Rooftop solar generates power at a levelized cost of under ₹2.50/unit, unlocking <strong>accelerated 40% tax depreciation</strong> benefits in Year 1 for commercial installations.
+          </p>
+          <span class="text-[11px] font-mono dark:text-cyan-neon text-cyan-600">ROI Horizon: Break-even in 3 to 3.5 years</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NEW FEATURE 2: CITIZEN COMMUNITY FEEDBACK & EXPERIENCE WALL -->
+  <section id="feedback-wall" class="py-20 border-b dark:border-void-800 border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest dark:text-emerald-bright text-emerald-600 mb-2">
+          <i data-lucide="messages-square" class="w-4 h-4"></i>
+          <span>Grassroots Community Hub</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-adaptive-head">
+          Citizen Feedback & Clean Energy Experience Wall
+        </h2>
+        <p class="text-adaptive-body mt-4 text-sm sm:text-base">
+          Real feedback, real electricity bills, and honest ground-reality experiences shared by citizens and clean energy adopters across India. Add your review or filter by topic.
+        </p>
+      </div>
+
+      <!-- Feedback Stats Bar -->
+      <div class="glass-panel p-6 rounded-3xl border mb-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center dark:border-void-700 border-slate-300">
+        <div>
+          <div class="text-3xl font-display font-extrabold dark:text-emerald-bright text-emerald-600" id="avgRatingDisplay">4.8 / 5.0</div>
+          <div class="text-xs text-adaptive-muted mt-1 font-mono">Average Citizen Satisfaction</div>
+        </div>
+        <div>
+          <div class="text-3xl font-display font-extrabold dark:text-cyan-neon text-cyan-600" id="totalReviewsCount">1,428+</div>
+          <div class="text-xs text-adaptive-muted mt-1 font-mono">Reviews Logged Across India</div>
+        </div>
+        <div>
+          <div class="text-3xl font-display font-extrabold text-adaptive-head">88%</div>
+          <div class="text-xs text-adaptive-muted mt-1 font-mono">Report >80% Monthly Bill Drop</div>
+        </div>
+        <div>
+          <div class="text-3xl font-display font-extrabold dark:text-emerald-bright text-emerald-600">24 Days</div>
+          <div class="text-xs text-adaptive-muted mt-1 font-mono">Average PM Surya Ghar Subsidy Time</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Interactive Feedback Form (Left Column) -->
+        <div class="lg:col-span-5 glass-panel p-6 sm:p-8 rounded-3xl border dark:border-cyan-neon/30 border-slate-300 sticky top-28">
+          <div class="flex items-center justify-between pb-4 mb-4 border-b dark:border-void-800 border-slate-200">
+            <h3 class="text-lg font-display font-bold text-adaptive-head flex items-center gap-2">
+              <i data-lucide="edit-3" class="w-5 h-5 dark:text-cyan-neon text-cyan-600"></i>
+              <span>Share Your Clean Energy Story</span>
+            </h3>
+            <span class="text-[10px] font-mono uppercase dark:text-emerald-bright text-emerald-600 font-bold">Public Feed</span>
+          </div>
+
+          <form id="feedbackForm" onsubmit="handleFeedbackSubmit(event)" class="space-y-4">
+            
+            <!-- Citizen Name & Role -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="fbName" class="block text-xs font-semibold uppercase text-adaptive-body mb-1">Your Name</label>
+                <input type="text" id="fbName" required placeholder="e.g. Ramesh Patel" 
+                  class="w-full inner-well border rounded-xl px-3.5 py-2.5 text-xs text-adaptive-head focus:outline-none focus:border-cyan-500">
+              </div>
+              <div>
+                <label for="fbRole" class="block text-xs font-semibold uppercase text-adaptive-body mb-1">Citizen Persona</label>
+                <select id="fbRole" required class="w-full inner-well border rounded-xl px-3 py-2.5 text-xs text-adaptive-head focus:outline-none focus:border-cyan-500">
+                  <option value="Homeowner">Homeowner (Rooftop)</option>
+                  <option value="Farmer">Farmer (Solar Pumping)</option>
+                  <option value="Apartment Tenant">Apartment Resident / Tenant</option>
+                  <option value="Small Business Owner">Small Business / MSME</option>
+                  <option value="Solar Engineer">Clean Tech Engineer</option>
+                  <option value="Student">Environmental Student</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- State / Location & Category -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="fbState" class="block text-xs font-semibold uppercase text-adaptive-body mb-1">State / City</label>
+                <input type="text" id="fbState" required placeholder="e.g. Surat, Gujarat" 
+                  class="w-full inner-well border rounded-xl px-3.5 py-2.5 text-xs text-adaptive-head focus:outline-none focus:border-cyan-500">
+              </div>
+              <div>
+                <label for="fbCategory" class="block text-xs font-semibold uppercase text-adaptive-body mb-1">Feedback Category</label>
+                <select id="fbCategory" required class="w-full inner-well border rounded-xl px-3 py-2.5 text-xs text-adaptive-head focus:outline-none focus:border-cyan-500">
+                  <option value="Rooftop Solar">Rooftop Solar Experience</option>
+                  <option value="Subsidies & Portal">PM Surya Ghar & Subsidies</option>
+                  <option value="DISCOM & Net-Metering">DISCOM & Net-Metering</option>
+                  <option value="Rural & Agrivoltaics">PM-KUSUM & Farm Solar</option>
+                  <option value="Suggestions & Challenges">Policy Suggestion / Challenge</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Rating Picker -->
+            <div>
+              <label class="block text-xs font-semibold uppercase text-adaptive-body mb-1.5">Rating for Clean Energy Shift</label>
+              <div class="flex items-center space-x-2" id="starPicker">
+                <button type="button" onclick="setRating(1)" class="star-btn p-1 text-amber-400 hover:scale-110 transition-transform"><i data-lucide="star" class="w-6 h-6 fill-amber-400"></i></button>
+                <button type="button" onclick="setRating(2)" class="star-btn p-1 text-amber-400 hover:scale-110 transition-transform"><i data-lucide="star" class="w-6 h-6 fill-amber-400"></i></button>
+                <button type="button" onclick="setRating(3)" class="star-btn p-1 text-amber-400 hover:scale-110 transition-transform"><i data-lucide="star" class="w-6 h-6 fill-amber-400"></i></button>
+                <button type="button" onclick="setRating(4)" class="star-btn p-1 text-amber-400 hover:scale-110 transition-transform"><i data-lucide="star" class="w-6 h-6 fill-amber-400"></i></button>
+                <button type="button" onclick="setRating(5)" class="star-btn p-1 text-amber-400 hover:scale-110 transition-transform"><i data-lucide="star" class="w-6 h-6 fill-amber-400"></i></button>
+                <span class="text-xs font-mono font-bold dark:text-cyan-neon text-cyan-600 ml-2" id="ratingScoreText">5.0 / 5.0</span>
+              </div>
+            </div>
+
+            <!-- Feedback Text -->
+            <div>
+              <label for="fbComment" class="block text-xs font-semibold uppercase text-adaptive-body mb-1">Your Real Experience / Tips</label>
+              <textarea id="fbComment" rows="3" required placeholder="Describe your bill reduction, installation timeline, portal subsidy disbursement speed, or bottlenecks with local meters..." 
+                class="w-full inner-well border rounded-xl p-3 text-xs text-adaptive-head focus:outline-none focus:border-cyan-500"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-3 rounded-xl font-display font-bold text-xs uppercase tracking-wider transition-all dark:bg-gradient-to-r dark:from-cyan-neon dark:to-emerald-neon dark:text-void-950 dark:shadow-[0_0_20px_rgba(0,240,255,0.3)] bg-gradient-to-r from-cyan-600 to-emerald-600 text-white shadow-md">
+              Publish Feedback to Wall
+            </button>
+          </form>
+        </div>
+
+        <!-- Feedback Stream with Filter Buttons (Right Column) -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Category Filter Bar -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+            <button onclick="filterFeedbacks('all')" class="fb-filter active px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all dark:bg-cyan-neon dark:text-void-950 bg-cyan-600 text-white shrink-0">
+              All Stories (12)
+            </button>
+            <button onclick="filterFeedbacks('Rooftop Solar')" class="fb-filter px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider text-adaptive-muted hover:text-adaptive-head inner-well border shrink-0">
+              Rooftop Solar
+            </button>
+            <button onclick="filterFeedbacks('Subsidies & Portal')" class="fb-filter px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider text-adaptive-muted hover:text-adaptive-head inner-well border shrink-0">
+              PM Surya Ghar
+            </button>
+            <button onclick="filterFeedbacks('DISCOM & Net-Metering')" class="fb-filter px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider text-adaptive-muted hover:text-adaptive-head inner-well border shrink-0">
+              Net-Metering
+            </button>
+            <button onclick="filterFeedbacks('Rural & Agrivoltaics')" class="fb-filter px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider text-adaptive-muted hover:text-adaptive-head inner-well border shrink-0">
+              Farmers & Pumps
+            </button>
+          </div>
+
+          <!-- Dynamic Container for User Reviews -->
+          <div id="feedbackStream" class="space-y-4">
+            <!-- Injected via JavaScript -->
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PILLAR 1: RENEWABLE RESOURCES DEEP DIVE -->
+  <section id="resources" class="py-20 border-b dark:border-void-800 border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-12">
+        <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest dark:text-cyan-neon text-cyan-600 mb-2">
+          <i data-lucide="layers" class="w-4 h-4"></i>
+          <span>Pillar One: Renewable Vectors</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-display font-extrabold tracking-tight text-adaptive-head">
+          The 6 Foundational Clean Energy Resources
+        </h2>
+        <p class="text-adaptive-body mt-3 text-sm sm:text-base">
+          From semiconductor photovoltaic conversion to high-enthalpy tectonic reservoirs, each clean vector offers distinct thermodynamic efficiencies, operational baseload potential, and regional viability across India.
+        </p>
+      </div>
+
+      <!-- Resource Sub-Tabs -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-8" id="resourceTabs">
+        <button onclick="selectResource('solar')" id="tab-solar" class="res-tab active p-3 rounded-2xl glass-panel border flex flex-col items-center text-center transition-all dark:border-cyan-neon dark:text-white border-cyan-600 text-cyan-800 font-bold">
+          <i data-lucide="sun" class="w-5 h-5 mb-1.5 dark:text-cyan-neon text-cyan-600"></i>
+          <span class="text-xs font-display font-bold">Solar PV / CSP</span>
+        </button>
+        <button onclick="selectResource('wind')" id="tab-wind" class="res-tab p-3 rounded-2xl glass-panel border flex flex-col items-center text-center transition-all dark:border-void-700 text-adaptive-muted hover:text-adaptive-head border-slate-200">
+          <i data-lucide="wind" class="w-5 h-5 mb-1.5"></i>
+          <span class="text-xs font-display font-bold">Wind (On/Offshore)</span>
+        </button>
+        <button onclick="selectResource('hydro')" id="tab-hydro" class="res-tab p-3 rounded-2xl glass-panel border flex flex-col items-center text-center transition-all dark:border-void-700 text-adaptive-muted hover:text-adaptive-head border-slate-200">
+          <i data-lucide="waves" class="w-5 h-5 mb-1.5"></i>
+          <span class="text-xs font-display font-bold">Hydro & PSH</span>
+        </button>
+        <button onclick="selectResource('hydrogen')" id="tab-hydrogen" class="res-tab p-3 rounded-2xl glass-panel border flex flex-col items-center text-center transition-all dark:border-void-700 text-adaptive-muted hover:text-adaptive-head border-slate-200">
+          <i data-lucide="atom" class="w-5 h-5 mb-1.5"></i>
+          <span class="text-xs font-display font-bold">Green Hydrogen</span>
+        </button>
+        <button onclick="selectResource('biomass')" id="tab-biomass" class="res-tab p-3 rounded-2xl glass-panel border flex flex-col items-center text-center transition-all dark:border-void-700 text-adaptive-muted hover:text-adaptive-head border-slate-200">
+          <i data-lucide="leaf" class="w-5 h-5 mb-1.5"></i>
+          <span class="text-xs font-display font-bold">Bioenergy & CBG</span>
+        </button>
+        <button onclick="selectResource('geothermal')" id="tab-geothermal" class="res-tab p-3 rounded-2xl glass-panel border flex flex-col items-center text-center transition-all dark:border-void-700 text-adaptive-muted hover:text-adaptive-head border-slate-200">
+          <i data-lucide="flame" class="w-5 h-5 mb-1.5"></i>
+          <span class="text-xs font-display font-bold">Geothermal & Marine</span>
+        </button>
+      </div>
+
+      <!-- Resource Dynamic Card Container -->
+      <div id="resourceDetailBox" class="glass-panel p-6 sm:p-10 rounded-3xl relative border dark:border-cyan-neon/30 border-slate-200">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLAR 2: CAUSES AND DIRECT EFFECTS -->
+  <section id="causes-effects" class="py-20 border-b dark:bg-void-900/60 dark:border-void-800 bg-slate-50 border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-14">
+        <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest dark:text-emerald-bright text-emerald-600 mb-2">
+          <i data-lucide="activity" class="w-4 h-4"></i>
+          <span>Pillar Two: Systemic Drivers</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-display font-extrabold tracking-tight text-adaptive-head">
+          Causes of the Crisis & Multi-Sector Direct Effects
+        </h2>
+        <p class="text-adaptive-body mt-3 text-sm sm:text-base">
+          Examining the compounding ecological and economic factors forcing the obsolescence of thermal hydrocarbons, and the structural socio-economic benefits unleashed by decentralized power.
+        </p>
+      </div>
+
+      <!-- 2-Column Comparative Matrix -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <!-- Causes Column -->
+        <div class="space-y-6">
+          <div class="flex items-center justify-between pb-3 border-b dark:border-void-700 border-slate-300">
+            <h3 class="text-xl font-display font-bold text-adaptive-head flex items-center gap-2">
+              <i data-lucide="flame" class="w-5 h-5 text-rose-500"></i>
+              <span>Root Causes Driving the Clean Shift</span>
+            </h3>
+            <span class="text-xs font-mono text-rose-500 uppercase font-semibold">The Catalyst</span>
+          </div>
+
+          <!-- Cause Card 1 (with image) -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-rose-500">
+            <div class="img-zoom-wrap h-36 mb-4 bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1569163139599-0f4517e36f51?auto=format&fit=crop&w=800&q=80" 
+                   alt="Industrial Smokestacks Air Smog" 
+                   onerror="handleImgError(this, 'thermal-smog');"
+                   class="w-full h-full object-cover img-zoom">
+            </div>
+            <h4 class="text-base font-display font-bold text-adaptive-head mb-2">Atmospheric Carbon Sinks & Climate Breakdown</h4>
+            <p class="text-xs sm:text-sm text-adaptive-body leading-relaxed mb-3">
+              Combustion of thermal coal and petroleum has elevated global CO₂ concentrations past 422 ppm. India suffers from delayed South Asian summer monsoons, agricultural drought cycles in the Deccan plateau, and catastrophic Himalayan glacial burst floods.
+            </p>
+            <div class="text-[11px] font-mono text-adaptive-muted inner-well p-2.5 rounded-lg border">
+              Indicator: India's power sector historically generated 49% of all domestic greenhouse emissions.
+            </div>
+          </div>
+
+          <!-- Cause Card 2 -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-amber-500">
+            <h4 class="text-base font-display font-bold text-adaptive-head mb-2">Hydrocarbon Import Exposure & Geopolitical Chokepoints</h4>
+            <p class="text-xs sm:text-sm text-adaptive-body leading-relaxed mb-3">
+              India imports more than 85% of its crude oil and roughly 50% of its natural gas needs. Currency depreciation combined with global geopolitical chokepoints inflicts severe balance-of-payments vulnerability upon the national treasury.
+            </p>
+            <div class="text-[11px] font-mono text-adaptive-muted inner-well p-2.5 rounded-lg border">
+              Metric: Over $130 Billion USD expended annually on imported oil and coking coal shipments.
+            </div>
+          </div>
+
+          <!-- Cause Card 3 -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-orange-500">
+            <h4 class="text-base font-display font-bold text-adaptive-head mb-2">Deadly Particulate Air Pollution in Northern Belts</h4>
+            <p class="text-xs sm:text-sm text-adaptive-body leading-relaxed mb-3">
+              Thermal power plants and fossil transport emit fine particulate matter (PM2.5, PM10), sulfur dioxides (SOx), and nitrous oxides (NOx). Every winter, northern plains trap toxic smog, costing an estimated 1.6 million lives annually.
+            </p>
+            <div class="text-[11px] font-mono text-adaptive-muted inner-well p-2.5 rounded-lg border">
+              Health Impact: Estimated 1.4% drag on India's GDP due to lost labor productivity and respiratory illness.
+            </div>
+          </div>
+        </div>
+
+        <!-- Effects Column -->
+        <div class="space-y-6">
+          <div class="flex items-center justify-between pb-3 border-b dark:border-void-700 border-slate-300">
+            <h3 class="text-xl font-display font-bold text-adaptive-head flex items-center gap-2">
+              <i data-lucide="sparkles" class="w-5 h-5 text-emerald-500"></i>
+              <span>Direct Multi-Sector Positive Effects</span>
+            </h3>
+            <span class="text-xs font-mono text-emerald-500 uppercase font-semibold">The Dividend</span>
+          </div>
+
+          <!-- Effect Card 1 (with image) -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-emerald-500">
+            <div class="img-zoom-wrap h-36 mb-4 bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80" 
+                   alt="Green ecological growth and clean environment" 
+                   onerror="handleImgError(this, 'clean-growth');"
+                   class="w-full h-full object-cover img-zoom">
+            </div>
+            <h4 class="text-base font-display font-bold text-adaptive-head mb-2">Marginal Grid Decarbonization & Clean Air Revival</h4>
+            <p class="text-xs sm:text-sm text-adaptive-body leading-relaxed mb-3">
+              Every megawatt-hour of solar and wind generation displaces sub-critical thermal coal burning. Transitioning to renewable electricity prevents roughly 0.82 kg of CO₂ per kilowatt-hour, directly revitalizing municipal airsheds.
+            </p>
+            <div class="text-[11px] font-mono dark:text-emerald-bright text-emerald-600 inner-well p-2.5 rounded-lg border">
+              Benefit: Over 210 million tonnes of annual CO₂ avoided through non-fossil capacity already in service.
+            </div>
+          </div>
+
+          <!-- Effect Card 2 -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-cyan-500">
+            <h4 class="text-base font-display font-bold text-adaptive-head mb-2">Agrarian Empowerment & Rural Solarization (PM-KUSUM)</h4>
+            <p class="text-xs sm:text-sm text-adaptive-body leading-relaxed mb-3">
+              Replacing diesel water irrigation pump-sets with stand-alone solar agricultural pumps frees farmers from recurrent fuel costs, ensures dependable daytime water access, and enables feeding surplus rural power back into local feeders.
+            </p>
+            <div class="text-[11px] font-mono dark:text-cyan-neon text-cyan-600 inner-well p-2.5 rounded-lg border">
+              Impact: Over 3.5 million farmers covered under off-grid and feeder-level solarization schemes.
+            </div>
+          </div>
+
+          <!-- Effect Card 3 -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-sky-500">
+            <h4 class="text-base font-display font-bold text-adaptive-head mb-2">High-Tech Employment & Industrial Ecosystems</h4>
+            <p class="text-xs sm:text-sm text-adaptive-body leading-relaxed mb-3">
+              Renewable buildouts generate localized employment across design, engineering, construction, smart metering, and module maintenance. The Surya Mitra program has upskilled over 100,000 certified technicians across Tier-2 and Tier-3 districts.
+            </p>
+            <div class="text-[11px] font-mono text-sky-500 inner-well p-2.5 rounded-lg border">
+              Jobs Horizon: An estimated 3.4 million clean energy direct jobs projected across India by 2030.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLAR 3: ECOLOGICAL EXPLOITATION & TRADE-OFFS -->
+  <section id="exploitation" class="py-20 border-b dark:border-void-800 border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-14">
+        <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-rose-500 mb-2">
+          <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+          <span>Pillar Three: The Unspoken Trade-offs</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-display font-extrabold tracking-tight text-adaptive-head">
+          Ecological Exploitation & Supply Chain Vulnerabilities
+        </h2>
+        <p class="text-adaptive-body mt-3 text-sm sm:text-base">
+          True sustainability requires confronting the adverse impacts of clean technology. From rare earth strip mining to habitat destruction and e-waste, renewables carry unavoidable ecological debt that must be systematically engineered away.
+        </p>
+      </div>
+
+      <!-- Trade-offs Gallery -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Exploitation 1: Mineral Mining -->
+        <div class="glass-panel rounded-3xl overflow-hidden border border-rose-500/30 glass-card-hover flex flex-col justify-between">
+          <div>
+            <div class="img-zoom-wrap h-48 bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" 
+                   alt="Heavy industrial opencast strip mining excavators" 
+                   onerror="handleImgError(this, 'strip-mining');"
+                   class="w-full h-full object-cover img-zoom">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between text-[11px] font-mono font-bold text-rose-500 uppercase mb-2">
+                <span>Supply Bottleneck</span>
+                <span>Critical Minerals</span>
+              </div>
+              <h3 class="text-lg font-display font-bold text-adaptive-head mb-2">Lithium, Cobalt & Neodymium Strip Mining</h3>
+              <p class="text-xs text-adaptive-body leading-relaxed mb-4">
+                Clean technologies are significantly more mineral-intensive than fossil equivalents. An offshore wind turbine requires several tonnes of rare earth magnets (Neodymium, Dysprosium), and utility-scale BESS requires thousands of tonnes of battery-grade Lithium and Cobalt.
+              </p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <div class="p-3 rounded-xl inner-well border text-[11px] text-adaptive-muted">
+              <strong class="text-rose-500">Pragmatic Solution:</strong> Closed-loop battery recycling mandates, urban mining of e-waste, and accelerating sodium-ion & iron-air battery chemistries.
+            </div>
+          </div>
+        </div>
+
+        <!-- Exploitation 2: Wildlife and Great Indian Bustard -->
+        <div class="glass-panel rounded-3xl overflow-hidden border border-rose-500/30 glass-card-hover flex flex-col justify-between">
+          <div>
+            <div class="img-zoom-wrap h-48 bg-slate-900">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Great_Indian_Bustard_%2850862545631%29.jpg/960px-Great_Indian_Bustard_%2850862545631%29.jpg" 
+                   alt="Great Indian Bustard walking in Thar Desert habitat" 
+                   onerror="handleImgError(this, 'bustard-desert');"
+                   class="w-full h-full object-cover img-zoom">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between text-[11px] font-mono font-bold text-rose-500 uppercase mb-2">
+                <span>Land Encroachment</span>
+                <span>Avian Biodiversity</span>
+              </div>
+              <h3 class="text-lg font-display font-bold text-adaptive-head mb-2">Great Indian Bustard & Desert Fragmentation</h3>
+              <p class="text-xs text-adaptive-body leading-relaxed mb-4">
+                To build 1,000 MW of solar PV requires 4,000 to 5,000 contiguous acres. In Rajasthan and Gujarat, overhead high-voltage transmission lines cross the natural flight corridors of the critically endangered <strong>Great Indian Bustard (GIB)</strong>, leading to fatal electrocutions.
+              </p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <div class="p-3 rounded-xl inner-well border text-[11px] text-adaptive-muted">
+              <strong class="text-rose-500">Pragmatic Solution:</strong> Installation of dynamic bird-flight diverters, strict demarcation of priority conservation zones, and preferential brownfield rooftop deployment.
+            </div>
+          </div>
+        </div>
+
+        <!-- Exploitation 3: The Approaching Solar PV E-Waste Deluge -->
+        <div class="glass-panel rounded-3xl overflow-hidden border border-rose-500/30 glass-card-hover flex flex-col justify-between">
+          <div>
+            <div class="img-zoom-wrap h-48 bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1558441719-8b489c63f7d1?auto=format&fit=crop&w=800&q=80" 
+                   alt="Solar panel modules silicone e-waste scrap" 
+                   onerror="handleImgError(this, 'pv-ewaste');"
+                   class="w-full h-full object-cover img-zoom">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between text-[11px] font-mono font-bold text-rose-500 uppercase mb-2">
+                <span>Lifecycle Hazard</span>
+                <span>4.5M Tonnes by 2050</span>
+              </div>
+              <h3 class="text-lg font-display font-bold text-adaptive-head mb-2">Toxic Module E-Waste & Recycling Deficit</h3>
+              <p class="text-xs text-adaptive-body leading-relaxed mb-4">
+                Solar PV modules carry a lifespan of 25 years. Early generation panels will soon enter the disposal stream in huge volumes. Standard modules contain lead solder and trace cadmium. Without dedicated mechanical delamination facilities, panels end up in unlined landfills.
+              </p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <div class="p-3 rounded-xl inner-well border text-[11px] text-adaptive-muted">
+              <strong class="text-rose-500">Pragmatic Solution:</strong> Enforcing Extended Producer Responsibility (EPR) regulations on solar manufacturers and financing specialized glass and silver recovery smelters.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Additional Row: River Damming & Panel Water Stress -->
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-300 dark:border-void-700">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center dark:bg-void-950 dark:border dark:border-cyan-neon/30 dark:text-cyan-neon bg-cyan-100 text-cyan-700">
+              <i data-lucide="droplet" class="w-5 h-5"></i>
+            </div>
+            <h4 class="text-base font-display font-bold text-adaptive-head">Water Consumption for Desert Panel Cleaning</h4>
+          </div>
+          <p class="text-xs sm:text-sm text-adaptive-body leading-relaxed">
+            Dust and soiling can degrade solar PV efficiency by up to 30%. In hyper-arid zones like Western Rajasthan, washing mega-solar arrays historically consumed millions of liters of scarce groundwater weekly. Transitioning to robotic waterless dry-brushing crawlers is imperative.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-300 dark:border-void-700">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center dark:bg-void-950 dark:border dark:border-emerald-neon/30 dark:text-emerald-bright bg-emerald-100 text-emerald-700">
+              <i data-lucide="mountain" class="w-5 h-5"></i>
+            </div>
+            <h4 class="text-base font-display font-bold text-adaptive-head">Riverine Ecosystem Disruption from Mega Dams</h4>
+          </div>
+          <p class="text-xs sm:text-sm text-adaptive-body leading-relaxed">
+            While large hydro reservoirs provide crucial green peaking power, impounding river channels disrupts natural silt transport, prevents migratory fish runs, and risks methane degassing from flooded sub-surface organic matter. Off-river Pumped Storage Hydropower (PSH) provides a gentler alternative.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLAR 4: INDIA PROGRESS & PANCHAMRIT -->
+  <section id="india-progress" class="py-20 border-b dark:bg-void-900/40 dark:border-void-800 bg-slate-50 border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest dark:text-emerald-bright text-emerald-600 mb-2">
+          <i data-lucide="trending-up" class="w-4 h-4"></i>
+          <span>National Scorecard</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-adaptive-head">
+          India's Clean Energy Odyssey & Panchamrit
+        </h2>
+        <p class="text-adaptive-body mt-4 text-sm sm:text-base">
+          From a modest 35 GW of renewables in 2014 to surpassing 200+ GW of non-fossil capacity today, India is rewriting the textbook on rapid, developing-nation energy transitions.
+        </p>
+      </div>
+
+      <!-- Charts Row (Chart.js dynamically adapted to theme) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+        
+        <!-- Line Chart: 2014-2030 Capacity Trajectory -->
+        <div class="lg:col-span-7 glass-panel p-6 sm:p-8 rounded-3xl border flex flex-col justify-between dark:border-cyan-neon/30 border-slate-300">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h3 class="text-lg font-display font-bold text-adaptive-head">Clean Energy Capacity Trajectory (GW)</h3>
+                <p class="text-xs text-adaptive-muted">Total Installed Non-Fossil Gigawatts (2014 - 2030 Target)</p>
+              </div>
+              <span class="text-xs font-mono px-3 py-1 rounded-full border dark:bg-cyan-950 dark:border-cyan-neon/40 dark:text-cyan-neon bg-cyan-100 border-cyan-300 text-cyan-800">COP26 500 GW Goal</span>
+            </div>
+            <div class="relative h-64 sm:h-72 w-full">
+              <canvas id="capacityChart"></canvas>
+            </div>
+          </div>
+          <div class="text-[11px] font-mono text-adaptive-muted mt-4 pt-3 border-t dark:border-void-800 border-slate-200 flex justify-between">
+            <span>Data: MNRE & Central Electricity Authority (CEA)</span>
+            <span class="dark:text-emerald-bright text-emerald-600 font-bold">+485% Growth Since 2014</span>
+          </div>
+        </div>
+
+        <!-- Doughnut Chart: Power Generation Mix -->
+        <div class="lg:col-span-5 glass-panel p-6 sm:p-8 rounded-3xl border flex flex-col justify-between dark:border-emerald-neon/30 border-slate-300">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h3 class="text-lg font-display font-bold text-adaptive-head">All-India Power Capacity Mix</h3>
+                <p class="text-xs text-adaptive-muted">Fossil vs. Non-Fossil Diversification</p>
+              </div>
+              <span class="text-xs font-mono px-3 py-1 rounded-full border dark:bg-emerald-950 dark:border-emerald-neon/40 dark:text-emerald-bright bg-emerald-100 border-emerald-300 text-emerald-800">45%+ Non-Fossil</span>
+            </div>
+            <div class="relative h-64 sm:h-72 w-full flex items-center justify-center">
+              <canvas id="generationMixChart"></canvas>
+            </div>
+          </div>
+          <div class="text-[11px] font-mono text-adaptive-muted mt-4 pt-3 border-t dark:border-void-800 border-slate-200 text-center">
+            Panchamrit Milestone: Surpassed 40% non-fossil capacity 9 years ahead of schedule.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Mega Projects Spotlight (Khavda, Pinnapuram, Muppandal) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        
+        <!-- Project 1: Khavda Hybrid Park -->
+        <div class="glass-panel rounded-3xl overflow-hidden border glass-card-hover flex flex-col dark:border-void-700 border-slate-300">
+          <div class="img-zoom-wrap h-44 bg-slate-900">
+            <img src="https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=600&q=80" 
+                 alt="Khavda Renewable Energy Park Gujarat Rann of Kutch" 
+                 onerror="handleImgError(this, 'khavda');"
+                 class="w-full h-full object-cover img-zoom">
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-mono uppercase font-bold dark:text-cyan-neon text-cyan-600">Khavda, Gujarat • 30,000 MW</span>
+              <h4 class="text-base font-display font-bold text-adaptive-head mt-1">World's Largest Hybrid Park</h4>
+              <p class="text-xs text-adaptive-body mt-2 leading-relaxed">
+                Spanning 726 square kilometers in the Rann of Kutch salt desert (equivalent to Singapore’s land area), generating clean electricity for 16 million homes.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t dark:border-void-800 border-slate-200 text-[11px] font-mono dark:text-cyan-neon text-cyan-600">
+              Tech: Bi-facial Solar PV + 5.2 MW Giant Wind Turbines
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Pinnapuram Integrated Storage -->
+        <div class="glass-panel rounded-3xl overflow-hidden border glass-card-hover flex flex-col dark:border-void-700 border-slate-300">
+          <div class="img-zoom-wrap h-44 bg-slate-900">
+            <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=600&q=80" 
+                 alt="Pinnapuram Pumped Storage Hydro Reservoir Andhra Pradesh" 
+                 onerror="handleImgError(this, 'pinnapuram');"
+                 class="w-full h-full object-cover img-zoom">
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-mono uppercase font-bold dark:text-emerald-bright text-emerald-600">Kurnool, AP • 5,230 MW</span>
+              <h4 class="text-base font-display font-bold text-adaptive-head mt-1">Pinnapuram IRESP Storage Base</h4>
+              <p class="text-xs text-adaptive-body mt-2 leading-relaxed">
+                The world’s first integrated single-location project combining 3,000 MW Solar, 550 MW Wind, and 1,200 MW Pumped Hydro into dispatchable round-the-clock power.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t dark:border-void-800 border-slate-200 text-[11px] font-mono dark:text-emerald-bright text-emerald-600">
+              Storage: 9 Hours / 10,800 MWh Pumped Hydro
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Muppandal Wind Corridor -->
+        <div class="glass-panel rounded-3xl overflow-hidden border glass-card-hover flex flex-col dark:border-void-700 border-slate-300">
+          <div class="img-zoom-wrap h-44 bg-slate-900">
+            <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=600&q=80" 
+                 alt="Muppandal Wind Farm Tamil Nadu Western Ghats" 
+                 onerror="handleImgError(this, 'muppandal');"
+                 class="w-full h-full object-cover img-zoom">
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-mono uppercase font-bold text-sky-500">Kanyakumari, TN • 1,500 MW</span>
+              <h4 class="text-base font-display font-bold text-adaptive-head mt-1">Muppandal Onshore Corridor</h4>
+              <p class="text-xs text-adaptive-body mt-2 leading-relaxed">
+                Harnessing high-velocity monsoon gusts channeled through the Western Ghats mountain passes to power heavy industrial textile and manufacturing hubs across South India.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t dark:border-void-800 border-slate-200 text-[11px] font-mono text-sky-500">
+              Status: Repowering older sub-MW turbines with 3+ MW units
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Flagship National Schemes Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-panel p-6 rounded-2xl border-t-4 dark:border-t-cyan-neon border-t-cyan-600">
+          <div class="text-xs font-mono font-bold dark:text-cyan-neon text-cyan-600 uppercase mb-2">Decentralized Rooftop Solar</div>
+          <h4 class="text-lg font-display font-bold text-adaptive-head mb-2">PM Surya Ghar: Muft Bijli</h4>
+          <p class="text-xs sm:text-sm text-adaptive-body leading-relaxed">
+            ₹75,021 Crore outlay providing direct central bank subsidies up to ₹78,000 for 1-3 kW domestic systems, guaranteeing up to 300 units of free power each month for 1 Crore families.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl border-t-4 dark:border-t-emerald-neon border-t-emerald-600">
+          <div class="text-xs font-mono font-bold dark:text-emerald-bright text-emerald-600 uppercase mb-2">Industrial Deep Decarbonization</div>
+          <h4 class="text-lg font-display font-bold text-adaptive-head mb-2">National Green Hydrogen Mission</h4>
+          <p class="text-xs sm:text-sm text-adaptive-body leading-relaxed">
+            ₹19,744 Crore stimulus including the Strategic Interventions for Green Hydrogen Transition (SIGHT) scheme, aiming for 5 MMT annual clean hydrogen production and domestic electrolyzer manufacturing by 2030.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl border-t-4 dark:border-t-cyan-neon border-t-cyan-600">
+          <div class="text-xs font-mono font-bold dark:text-cyan-neon text-cyan-600 uppercase mb-2">Interstate Wheeling Highways</div>
+          <h4 class="text-lg font-display font-bold text-adaptive-head mb-2">Green Energy Corridors (GEC)</h4>
+          <p class="text-xs sm:text-sm text-adaptive-body leading-relaxed">
+            Synchronizing ~20,000 ckm of high-voltage transmission lines and 66,000 MVA sub-stations across 8 renewable-rich states to evacuate clean energy to major urban load centers without congestion.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLAR 5: CRITICAL BOTTLENECKS & CHALLENGES -->
+  <section id="challenges" class="py-20 border-b dark:border-void-800 border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-14">
+        <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-rose-500 mb-2">
+          <i data-lucide="shield-alert" class="w-4 h-4"></i>
+          <span>Critical Bottlenecks</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-adaptive-head">
+          Systemic Future Challenges Ahead of 2030
+        </h2>
+        <p class="text-adaptive-body mt-4 text-sm sm:text-base">
+          Adding generation capacity is only half the battle. Preserving grid stability, upgrading financial health, and localizing component manufacturing represent the real tests of India's energy transition.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Challenge 1: The Duck Curve & Storage -->
+        <div class="glass-panel p-8 rounded-3xl border relative dark:border-void-700 border-slate-300">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="w-10 h-10 rounded-xl inner-well border flex items-center justify-center font-mono font-bold text-base dark:text-cyan-neon text-cyan-600">01</span>
+            <h3 class="text-xl font-display font-bold text-adaptive-head">The "Duck Curve" & Storage Deficit</h3>
+          </div>
+          <p class="text-adaptive-body text-xs sm:text-sm leading-relaxed mb-4">
+            Midday solar over-generation drops net grid demand to rock bottom. But when the sun sets, consumer evening demand spikes violently from 7 PM to 10 PM. Without swift storage ramp-ups, grid frequency fluctuates dangerously, forcing thermal plants to cycle on and off.
+          </p>
+          <div class="p-4 rounded-2xl inner-well border text-xs font-mono dark:text-cyan-neon text-cyan-700">
+            Required: At least 42 GW / 208 GWh of BESS and 19 GW of Pumped Storage Hydropower by 2030 to prevent massive daytime curtailment.
+          </div>
+        </div>
+
+        <!-- Challenge 2: DISCOM Financial Health -->
+        <div class="glass-panel p-8 rounded-3xl border relative dark:border-void-700 border-slate-300">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="w-10 h-10 rounded-xl inner-well border flex items-center justify-center font-mono font-bold text-base text-rose-500">02</span>
+            <h3 class="text-xl font-display font-bold text-adaptive-head">DISCOM Balance Sheet Distress</h3>
+          </div>
+          <p class="text-adaptive-body text-xs sm:text-sm leading-relaxed mb-4">
+            State power distribution companies (DISCOMs) remain burdened by high Aggregate Technical & Commercial (AT&C) losses, cross-subsidies, and delayed state payments. Delayed clearing of renewable power purchase dues increases financial risks for clean energy developers.
+          </p>
+          <div class="p-4 rounded-2xl inner-well border text-xs font-mono text-rose-500">
+            Fix: Nationwide roll-out of smart pre-paid meters and strict enforcement of the Late Payment Surcharge (LPS) Rules.
+          </div>
+        </div>
+
+        <!-- Challenge 3: Ingot/Wafer Import Concentration -->
+        <div class="glass-panel p-8 rounded-3xl border relative dark:border-void-700 border-slate-300">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="w-10 h-10 rounded-xl inner-well border flex items-center justify-center font-mono font-bold text-base dark:text-emerald-bright text-emerald-600">03</span>
+            <h3 class="text-xl font-display font-bold text-adaptive-head">Polysilicon & Wafer Import Dominance</h3>
+          </div>
+          <p class="text-adaptive-body text-xs sm:text-sm leading-relaxed mb-4">
+            While India has expanded domestic solar module assembly, it still relies heavily on imports for upstream high-purity polysilicon, solar ingots, and wafers. Swapping foreign oil dependence for foreign solar component reliance presents strategic vulnerability.
+          </p>
+          <div class="p-4 rounded-2xl inner-well border text-xs font-mono dark:text-emerald-bright text-emerald-700">
+            Intervention: ₹24,000 Crore Production Linked Incentive (PLI) Scheme to vertically integrate ingot-to-module factories domestically.
+          </div>
+        </div>
+
+        <!-- Challenge 4: Transmission & Right-of-Way Delays -->
+        <div class="glass-panel p-8 rounded-3xl border relative dark:border-void-700 border-slate-300">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="w-10 h-10 rounded-xl inner-well border flex items-center justify-center font-mono font-bold text-base dark:text-cyan-neon text-cyan-600">04</span>
+            <h3 class="text-xl font-display font-bold text-adaptive-head">Transmission Lead-Time Asymmetry</h3>
+          </div>
+          <p class="text-adaptive-body text-xs sm:text-sm leading-relaxed mb-4">
+            A 500 MW solar plant can be commissioned in 12 to 18 months, but constructing interstate 765 kV transmission towers and securing environmental Right-of-Way (RoW) across private farmland often takes 36 to 48 months, causing stranded capacity.
+          </p>
+          <div class="p-4 rounded-2xl inner-well border text-xs font-mono dark:text-cyan-neon text-cyan-700">
+            Policy Solution: Implementing General Network Access (GNA) regulations to decouple generation bids from localized substation construction.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLAR 6: INTERACTIVE ROOFTOP SOLAR & CARBON TOOL -->
+  <section id="calculator" class="py-20 border-b dark:bg-void-900/60 dark:border-void-800 bg-slate-100 border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest dark:text-cyan-neon text-cyan-600 mb-2">
+          <i data-lucide="calculator" class="w-4 h-4"></i>
+          <span>Interactive Financial Engine</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-display font-extrabold tracking-tight text-adaptive-head">
+          Rooftop Solar & Carbon Offset Calculator
+        </h2>
+        <p class="text-adaptive-body mt-3 text-xs sm:text-sm">
+          Simulate your residential or commercial transition using real Indian DISCOM billing structures, central PM Surya Ghar subsidies, and CEA carbon emission factors.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Controls Column -->
+        <div class="lg:col-span-5 glass-panel p-6 sm:p-8 rounded-3xl border dark:border-cyan-neon/30 border-slate-300 space-y-6">
+          <h3 class="text-base font-display font-bold text-adaptive-head flex items-center gap-2">
+            <i data-lucide="sliders" class="w-4 h-4 dark:text-cyan-neon text-cyan-600"></i>
+            <span>Monthly Energy Economics</span>
+          </h3>
+
+          <!-- Monthly Bill Slider -->
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <label for="billSlider" class="text-xs font-semibold uppercase text-adaptive-body">Average Monthly Electricity Bill</label>
+              <span class="dark:text-cyan-neon text-cyan-600 font-mono font-bold text-sm">₹<span id="billVal">3,500</span></span>
+            </div>
+            <input type="range" id="billSlider" min="500" max="25000" step="250" value="3500" class="w-full">
+            <div class="flex justify-between text-[10px] text-adaptive-muted mt-1 font-mono">
+              <span>₹500 (Basic)</span>
+              <span>₹5,000 (Family Home)</span>
+              <span>₹25,000 (Commercial)</span>
+            </div>
+          </div>
+
+          <!-- Average Grid Tariff Slider -->
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <label for="tariffSlider" class="text-xs font-semibold uppercase text-adaptive-body">DISCOM Grid Tariff Rate</label>
+              <span class="dark:text-emerald-bright text-emerald-600 font-mono font-bold text-sm">₹<span id="tariffVal">8.00</span> / kWh</span>
+            </div>
+            <input type="range" id="tariffSlider" min="4.0" max="14.0" step="0.5" value="8.0" class="w-full">
+            <div class="flex justify-between text-[10px] text-adaptive-muted mt-1 font-mono">
+              <span>Subsidized (₹4)</span>
+              <span>Average Urban (₹8)</span>
+              <span>Commercial Tier (₹14)</span>
+            </div>
+          </div>
+
+          <!-- Central Subsidy Notification Banner -->
+          <div class="p-4 rounded-2xl inner-well border dark:border-emerald-neon/30 border-emerald-300 flex items-start gap-3">
+            <i data-lucide="gift" class="w-5 h-5 dark:text-emerald-bright text-emerald-600 shrink-0 mt-0.5"></i>
+            <div class="text-xs">
+              <span class="font-bold dark:text-emerald-bright text-emerald-700 block">PM Surya Ghar Subsidy Applied:</span>
+              <span class="text-adaptive-body text-[11px]" id="subsidySummary">Eligible for up to ₹78,000 Direct Benefit Transfer rebate.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculated Live Metrics Column -->
+        <div class="lg:col-span-7 glass-panel p-6 sm:p-8 rounded-3xl border dark:border-emerald-neon/30 border-slate-300 space-y-6">
+          <h3 class="text-base font-display font-bold text-adaptive-head flex items-center justify-between">
+            <span>Projected Technical & Financial Yield</span>
+            <span class="text-[10px] font-mono dark:text-emerald-bright text-emerald-700 uppercase px-2 py-0.5 rounded inner-well border dark:border-emerald-neon/30 border-emerald-300 font-bold">25-Year Life Cycle</span>
+          </h3>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <!-- Metric 1: System kW -->
+            <div class="inner-well p-4 sm:p-5 rounded-2xl border">
+              <div class="text-[10px] text-adaptive-muted font-mono uppercase">System Capacity</div>
+              <div class="text-2xl sm:text-3xl font-display font-extrabold dark:text-cyan-neon text-cyan-600 mt-1" id="outKw">3.6 kW</div>
+              <div class="text-[10px] text-adaptive-muted mt-1 font-mono" id="outArea">~360 sq.ft roof</div>
+            </div>
+
+            <!-- Metric 2: Annual Generation -->
+            <div class="inner-well p-4 sm:p-5 rounded-2xl border">
+              <div class="text-[10px] text-adaptive-muted font-mono uppercase">Annual Clean Units</div>
+              <div class="text-2xl sm:text-3xl font-display font-extrabold text-adaptive-head mt-1" id="outUnits">5,250</div>
+              <div class="text-[10px] text-adaptive-muted mt-1 font-mono">kWh / Year</div>
+            </div>
+
+            <!-- Metric 3: Annual Savings -->
+            <div class="inner-well p-4 sm:p-5 rounded-2xl border col-span-2 sm:col-span-1">
+              <div class="text-[10px] text-adaptive-muted font-mono uppercase">Annual Cost Savings</div>
+              <div class="text-2xl sm:text-3xl font-display font-extrabold dark:text-emerald-bright text-emerald-600 mt-1" id="outSavings">₹42,000</div>
+              <div class="text-[10px] dark:text-emerald-bright text-emerald-700 mt-1 font-mono">Payback in ~3.8 Years</div>
+            </div>
+          </div>
+
+          <!-- Extended Life Metrics -->
+          <div class="p-5 rounded-2xl inner-well border space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono text-adaptive-body uppercase font-semibold">25-Year Cumulative Savings:</span>
+              <span class="text-lg font-display font-bold text-adaptive-head" id="out25Savings">₹10.5 Lakhs</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono text-adaptive-body uppercase font-semibold">Lifetime CO₂ Avoided:</span>
+              <span class="text-lg font-display font-bold dark:text-cyan-neon text-cyan-600" id="outCo2">107 Metric Tonnes</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono text-adaptive-body uppercase font-semibold">Equivalent Forest Planted:</span>
+              <span class="text-lg font-display font-bold dark:text-emerald-bright text-emerald-600" id="outTrees">~4,800 Trees</span>
+            </div>
+          </div>
+
+          <div class="text-[11px] text-adaptive-muted leading-relaxed font-sans">
+            Calculations assume average 4.2 peak sun-hours daily in India, a standard 0.82 kg CO₂/kWh grid emission factor (CEA CO₂ Baseline Database), and 80% module performance retention over 25 years.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLAR 7: CLEAN ENERGY IQ QUIZ -->
+  <section id="quiz" class="py-20 border-b dark:border-void-800 border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest dark:text-cyan-neon text-cyan-600 mb-2">
+          <i data-lucide="help-circle" class="w-4 h-4"></i>
+          <span>Citizen Awareness Check</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-display font-extrabold tracking-tight text-adaptive-head">
+          Clean Energy IQ Knowledge Quiz
+        </h2>
+        <p class="text-adaptive-body mt-3 text-xs sm:text-sm">
+          Test your grasp of India's green energy milestones, grid thermodynamics, and environmental challenges.
+        </p>
+      </div>
+
+      <div class="glass-panel p-6 sm:p-10 rounded-3xl border relative dark:border-cyan-neon/30 border-slate-300" id="quizContainer">
+        
+        <!-- Question Header & Progress Bar -->
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-mono font-bold dark:text-cyan-neon text-cyan-600 uppercase" id="quizProgressText">Question 1 of 4</span>
+          <span class="text-xs font-mono dark:text-emerald-bright text-emerald-600 font-bold" id="quizScoreText">Score: 0</span>
+        </div>
+        
+        <div class="w-full inner-well h-2 rounded-full mb-8 overflow-hidden border">
+          <div class="h-full transition-all duration-300 dark:bg-gradient-to-r dark:from-cyan-neon dark:to-emerald-neon bg-gradient-to-r from-cyan-600 to-emerald-600" id="quizProgressBar" style="width: 25%"></div>
+        </div>
+
+        <!-- Question Title -->
+        <h3 class="text-lg sm:text-xl font-display font-bold text-adaptive-head mb-6" id="quizQuestion">
+          What is India's national non-fossil capacity target committed under the COP26 Panchamrit pledge for the year 2030?
+        </h3>
+
+        <!-- Options Buttons -->
+        <div class="space-y-3 mb-6" id="quizOptions">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Explanation Card -->
+        <div id="quizExplanation" class="hidden p-4 rounded-2xl inner-well border text-xs sm:text-sm text-adaptive-body mb-6 leading-relaxed">
+        </div>
+
+        <!-- Next Button -->
+        <div class="flex justify-end">
+          <button id="quizNextBtn" onclick="nextQuestion()" class="hidden px-6 py-3 rounded-xl font-display font-bold text-xs uppercase tracking-wider transition-all dark:bg-cyan-neon dark:text-void-950 dark:hover:bg-emerald-bright bg-cyan-600 text-white hover:bg-cyan-700 shadow-md">
+            Next Question
+          </button>
+        </div>
+
+        <!-- Completion Modal -->
+        <div id="quizCompletion" class="hidden text-center py-8">
+          <div class="w-16 h-16 rounded-2xl inner-well border mx-auto flex items-center justify-center dark:text-emerald-bright text-emerald-600 mb-4 dark:border-emerald-neon border-emerald-400 shadow-lg">
+            <i data-lucide="check-circle" class="w-8 h-8"></i>
+          </div>
+          <h4 class="text-2xl font-display font-bold text-adaptive-head mb-2">Quiz Completed!</h4>
+          <p class="text-sm text-adaptive-body mb-6" id="quizFinalMsg">You demonstrated stellar awareness of India's clean energy pathways.</p>
+          <button onclick="resetQuiz()" class="px-7 py-3 rounded-xl font-display font-bold text-xs uppercase tracking-wider transition-all dark:bg-gradient-to-r dark:from-cyan-neon dark:to-emerald-neon dark:text-void-950 bg-gradient-to-r from-cyan-600 to-emerald-600 text-white shadow-md">
+            Retake Knowledge Quiz
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLAR 8: CITIZEN CLIMATE CHARTER & PLEDGE -->
+  <section id="pledge" class="py-20 border-b dark:bg-void-900/40 dark:border-void-800 bg-slate-50 border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest dark:text-emerald-bright text-emerald-600 mb-2">
+          <i data-lucide="award" class="w-4 h-4"></i>
+          <span>Mission LiFE Commitment</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-display font-extrabold tracking-tight text-adaptive-head">
+          Citizen Clean Energy Charter & Pledge
+        </h2>
+        <p class="text-adaptive-body mt-3 text-xs sm:text-sm">
+          Join thousands of informed citizens accelerating India's sustainable future. Sign the national pact and generate your verified digital certificate.
+        </p>
+      </div>
+
+      <div class="glass-panel p-6 sm:p-10 rounded-3xl border dark:border-emerald-neon/30 border-slate-300">
+        <form id="pledgeForm" onsubmit="handlePledgeSubmit(event)">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label for="citizenName" class="block text-xs font-semibold uppercase text-adaptive-body mb-2">Full Legal Name</label>
+              <input type="text" id="citizenName" required placeholder="e.g. Ananya Sharma" 
+                class="w-full inner-well border rounded-xl px-4 py-3 text-sm text-adaptive-head focus:outline-none focus:border-cyan-500">
+            </div>
+            <div>
+              <label for="citizenState" class="block text-xs font-semibold uppercase text-adaptive-body mb-2">State / Union Territory</label>
+              <select id="citizenState" required class="w-full inner-well border rounded-xl px-4 py-3 text-sm text-adaptive-head focus:outline-none focus:border-cyan-500">
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Delhi NCR">Delhi NCR</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="West Bengal">West Bengal</option>
+                <option value="Other Territory">Other Union Territory / State</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mb-8 space-y-3">
+            <span class="block text-xs font-semibold uppercase text-adaptive-body mb-2">My Direct Climate Commitments:</span>
+            <label class="flex items-start space-x-3 text-xs text-adaptive-body cursor-pointer">
+              <input type="checkbox" checked required class="mt-0.5 rounded text-cyan-600 inner-well border-slate-300 focus:ring-cyan-500">
+              <span>I pledge to eliminate phantom power standby loads and operate residential air conditioning at an energy-efficient 24°C or higher.</span>
+            </label>
+            <label class="flex items-start space-x-3 text-xs text-adaptive-body cursor-pointer">
+              <input type="checkbox" checked required class="mt-0.5 rounded text-cyan-600 inner-well border-slate-300 focus:ring-cyan-500">
+              <span>I pledge to champion rooftop solar adoption, solar water heating, and annual energy audits across my community or workplace.</span>
+            </label>
+            <label class="flex items-start space-x-3 text-xs text-adaptive-body cursor-pointer">
+              <input type="checkbox" checked required class="mt-0.5 rounded text-cyan-600 inner-well border-slate-300 focus:ring-cyan-500">
+              <span>I pledge to advocate for circular recycling of solar panels and batteries, demanding responsible e-waste treatment.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-display font-bold text-xs uppercase tracking-wider transition-all dark:bg-gradient-to-r dark:from-cyan-neon dark:to-emerald-neon dark:text-void-950 dark:shadow-[0_0_20px_rgba(0,240,255,0.3)] bg-gradient-to-r from-cyan-600 to-emerald-600 text-white shadow-md">
+            Ratify Pledge & Issue Certificate
+          </button>
+        </form>
+
+        <!-- Printable Certificate Box -->
+        <div id="certificateContainer" class="hidden mt-10 pt-10 border-t dark:border-void-800 border-slate-200">
+          <div class="relative p-8 sm:p-12 rounded-3xl inner-well border-2 dark:border-cyan-neon/60 border-cyan-500 text-center shadow-xl">
+            
+            <div class="inline-flex items-center space-x-2 text-[10px] font-mono dark:text-cyan-neon text-cyan-700 uppercase tracking-widest mb-2 font-bold">
+              <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+              <span>National Clean Energy Registry • Mission LiFE</span>
+            </div>
+
+            <h4 class="text-2xl sm:text-3xl font-display font-extrabold text-adaptive-head">
+              Green Energy Ambassador Certificate
+            </h4>
+            
+            <p class="text-xs text-adaptive-muted mt-2 font-mono">This charter formally certifies that</p>
+            
+            <div class="text-3xl sm:text-4xl font-display font-extrabold gradient-text-accent my-3" id="certNameDisplay">
+              Citizen Name
+            </div>
+
+            <p class="text-xs sm:text-sm text-adaptive-body max-w-xl mx-auto leading-relaxed">
+              has sworn allegiance to sustainable energy stewardship, committing to eliminate personal carbon waste, promote decentralized solar proliferation, and support India's mission toward 500 GW of clean power and Net-Zero 2070.
+            </p>
+
+            <div class="mt-8 pt-6 border-t dark:border-void-800 border-slate-300 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-mono text-adaptive-muted">
+              <div id="certStateDisplay">Jurisdiction: India</div>
+              <div id="certDateDisplay">Issued: October 2026</div>
+              <div class="dark:text-emerald-bright text-emerald-600 font-bold">ID: #IN-RE-PLEDGE-<span id="certCodeDisplay">8841</span></div>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-wrap justify-center gap-4">
+            <button onclick="window.print()" class="px-5 py-2.5 rounded-xl inner-well text-xs font-display font-bold text-adaptive-head border border-slate-300 dark:border-void-700 transition-all flex items-center space-x-2 shadow-sm">
+              <i data-lucide="printer" class="w-4 h-4 dark:text-cyan-neon text-cyan-600"></i>
+              <span>Print / Save as PDF</span>
+            </button>
+            <button onclick="copyPledgeId()" class="px-5 py-2.5 rounded-xl inner-well text-xs font-display font-bold text-adaptive-head border border-slate-300 dark:border-void-700 transition-all flex items-center space-x-2 shadow-sm">
+              <i data-lucide="copy" class="w-4 h-4 dark:text-emerald-bright text-emerald-600"></i>
+              <span id="copyBtnText">Copy Registry ID</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12 text-xs font-mono border-t dark:bg-void-950 dark:text-slate-500 dark:border-void-800 bg-slate-900 text-slate-400 border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center dark:bg-void-900 dark:border dark:border-cyan-neon/30 dark:text-cyan-neon bg-slate-800 text-cyan-400">
+            <i data-lucide="zap" class="w-4 h-4"></i>
+          </div>
+          <span class="text-white font-display font-bold text-sm">UrjaPravah India</span>
+          <span>• Dual-Tone Clean Energy Awareness Infrastructure</span>
+        </div>
+        <div class="text-center md:text-right text-slate-400">
+          Source references: Ministry of New and Renewable Energy (MNRE), CEA, CEEW & IPCC AR6.
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-slate-800/80 text-center text-slate-500">
+        Empowering Citizens for SDG 7 (Affordable and Clean Energy) & SDG 13 (Climate Action).
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // FAILSAFE DYNAMIC SVG GRAPHIC GENERATOR
+    function handleImgError(imgElement, type) {
+      imgElement.onerror = null;
+      
+      const themeBg = isDarkMode ? '%23060d10' : '%23f1f5f9';
+      const themeText = isDarkMode ? '%23ffffff' : '%230f172a';
+      const themeAccent = isDarkMode ? '%2300f0ff' : '%230284c7';
+      const themeSecondary = isDarkMode ? '%2310b981' : '%23059669';
+
+      const labels = {
+        'solar-desert': { title: 'Bhadla Solar Park', sub: 'Thar Desert, Rajasthan • 2,245 MW' },
+        'bustard-desert': { title: 'Great Indian Bustard', sub: 'Critically Endangered • Thar Habitat' },
+        'strip-mining': { title: 'Critical Mineral Extraction', sub: 'Lithium & Rare Earth Opencast' },
+        'pv-ewaste': { title: 'Solar PV Module Recycling', sub: 'Lifecycle Circular Economy Focus' },
+        'khavda': { title: 'Khavda Renewable Energy Park', sub: 'Rann of Kutch • 30,000 MW Hybrid' },
+        'pinnapuram': { title: 'Pinnapuram IRESP Storage Base', sub: 'Integrated Solar, Wind & PSH' },
+        'muppandal': { title: 'Muppandal Wind Energy Corridor', sub: 'Western Ghats Pass • 1,500 MW' },
+        'thermal-smog': { title: 'Thermal Power Plant Smog', sub: 'Particulate & Carbon Emissions' },
+        'clean-growth': { title: 'Clean Decarbonization Growth', sub: 'Zero-Carbon Power Generation' },
+        'solar': { title: 'Solar Photovoltaic Systems', sub: 'Photons to Direct Current Conversion' },
+        'wind': { title: 'Wind Turbine Power Systems', sub: 'Kinetic Airflow Mechanical Conversion' },
+        'hydro': { title: 'Hydroelectric & Pumped Storage', sub: 'Gravitational Hydraulic Potential' },
+        'hydrogen': { title: 'Green Hydrogen Electrolysis', sub: 'Zero-Carbon H₂ Molecular Vector' },
+        'biomass': { title: 'Bioenergy & Compressed Biogas', sub: 'Agricultural Circular Decarbonization' },
+        'geothermal': { title: 'Geothermal & Marine Enthalpy', sub: 'Continuous 24/7 Subterranean Baseload' }
+      };
+
+      const meta = labels[type] || { title: 'Renewable Clean Energy', sub: 'UrjaPravah India Sustainable Intelligence' };
+
+      imgElement.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500"><rect width="800" height="500" fill="${themeBg}"/><circle cx="400" cy="180" r="70" fill="${themeAccent}" opacity="0.15"/><polygon points="400,120 370,190 410,190 390,240 430,170 395,170" fill="${themeAccent}"/><text x="400" y="300" font-family="sans-serif" font-size="24" font-weight="bold" fill="${themeText}" text-anchor="middle">${meta.title}</text><text x="400" y="335" font-family="sans-serif" font-size="14" fill="${themeSecondary}" text-anchor="middle">${meta.sub}</text><rect x="250" y="370" width="300" height="30" rx="15" fill="${themeAccent}" opacity="0.1"/><text x="400" y="390" font-family="monospace" font-size="11" fill="${themeAccent}" text-anchor="middle">URJAPRAVAH RESILIENT ASSET</text></svg>`;
+    }
+
+    // DUAL THEME STATE MANAGEMENT
+    let isDarkMode = true;
+
+    function applyTheme(isDark) {
+      isDarkMode = isDark;
+      const html = document.documentElement;
+      if (isDark) {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+      lucide.createIcons();
+      if (window.capChart && window.mixChart) {
+        updateChartThemes();
+      }
+    }
+
+    function toggleTheme() {
+      applyTheme(!isDarkMode);
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      applyTheme(false);
+    } else {
+      applyTheme(true);
+    }
+
+    // AMBIENT PARTICLE CANVAS ANIMATION
+    (function initAmbientCanvas() {
+      const canvas = document.getElementById('ambientCanvas');
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+
+      const particles = [];
+      const particleCount = 42;
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          radius: Math.random() * 2 + 1,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          alpha: Math.random() * 0.5 + 0.2
+        });
+      }
+
+      window.addEventListener('resize', () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      });
+
+      function animate() {
+        ctx.clearRect(0, 0, w, h);
+
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0) p.x = w;
+          if (p.x > w) p.x = 0;
+          if (p.y < 0) p.y = h;
+          if (p.y > h) p.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = isDarkMode ? '#00f0ff' : '#0284c7';
+          ctx.globalAlpha = p.alpha;
+          ctx.fill();
+        });
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+
+    // Mobile Navbar Toggle
+    const mobileBtn = document.getElementById('mobileNavToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    document.querySelectorAll('.mobile-item').forEach(item => {
+      item.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    // Metric Counters
+    const counters = document.querySelectorAll('.counter');
+    let hasAnimated = false;
+    function runCounters() {
+      counters.forEach(c => {
+        const target = +c.getAttribute('data-target');
+        let count = 0;
+        const speed = target / 40;
+        const update = () => {
+          count += speed;
+          if (count < target) {
+            c.innerText = Math.ceil(count) + '+';
+            setTimeout(update, 25);
+          } else {
+            c.innerText = target + '+';
+          }
+        };
+        update();
+      });
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!hasAnimated && window.scrollY > 150) {
+        runCounters();
+        hasAnimated = true;
+      }
+    });
+
+    // 3-WAY PERSPECTIVE SWITCHER
+    function switchView(viewName) {
+      document.querySelectorAll('.view-btn').forEach(btn => {
+        btn.classList.remove('dark:bg-gradient-to-r', 'dark:from-cyan-neon', 'dark:to-emerald-neon', 'dark:text-void-950', 'bg-cyan-600', 'text-white', 'active');
+        btn.classList.add('text-adaptive-muted');
+      });
+      const activeBtn = document.getElementById(`viewBtn-${viewName}`);
+      if (activeBtn) {
+        if (isDarkMode) {
+          activeBtn.classList.add('dark:bg-gradient-to-r', 'dark:from-cyan-neon', 'dark:to-emerald-neon', 'dark:text-void-950', 'active');
+        } else {
+          activeBtn.classList.add('bg-cyan-600', 'text-white', 'active');
+        }
+        activeBtn.classList.remove('text-adaptive-muted');
+      }
+
+      const targetElement = document.getElementById(viewName);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // MULTI-RESOURCE REPOSITORY
+    const resourceData = {
+      solar: {
+        key: 'solar',
+        title: "Solar Photovoltaic (PV) & Concentrated Solar Power (CSP)",
+        badge: "Installed: ~85+ GW | Potential: 748 GW",
+        image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1000&q=80",
+        physics: "Photons strike the semiconductor p-n junction with energy greater than silicon's band gap, exciting valence electrons into the conduction band to form DC current.",
+        causes: "Abundant 300+ clear sunshine days annually, heavy daytime industrial peaking needs, and urgent reduction of imported thermal coal bills.",
+        effects: "Massive daytime peak shaving, zero marginal fuel cost, and democratized agricultural and domestic micro-generation.",
+        darkReality: "Demands 4-5 acres per MW, encroaching on arid dryland habitats of the Great Indian Bustard. Desert dust washing creates groundwater depletion without robotic dry crawlers. Imminent 4.5 million tonnes of toxic PV module waste by 2050."
+      },
+      wind: {
+        key: 'wind',
+        title: "Onshore & Offshore Wind Power Generation",
+        badge: "Installed: ~46+ GW | Potential: 302 GW (at 100m)",
+        image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1000&q=80",
+        physics: "Atmospheric thermal gradients turn aerofoil blades. The rotating hub drives a high-ratio gearbox or permanent magnet direct-drive synchronous generator to inject clean AC into the grid.",
+        causes: "Critical counter-cyclical balance with solar; wind peaks during nocturnal hours and the monsoon season when solar irradiance drops.",
+        effects: "Virtually zero water requirement during operation, minimal lifecycle carbon footprint (~11g CO₂/kWh), and co-existence with agricultural farming beneath towers.",
+        darkReality: "Direct-drive turbine magnets require rare earths (Neodymium, Dysprosium) with destructive opencast refining. Glass fiber thermoset blades resist conventional recycling and end up buried."
+      },
+      hydro: {
+        key: 'hydro',
+        title: "Hydroelectric Dams & Pumped Storage Hydropower (PSH)",
+        badge: "Installed: ~47 GW Large Hydro | PSH Potential: 103 GW",
+        image: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1000&q=80",
+        physics: "Gravitational potential energy of stored water turns high-head Francis or Pelton hydraulic turbines. Pumped storage systems reverse the turbine in pump mode during solar surplus hours to refill upper reservoirs.",
+        causes: "Essential need for spinning reserves, instantaneous millisecond black-start grid stabilization, and evening peak balance.",
+        effects: "Centennial infrastructure lifespans, heavy physical inertia stabilizing grid frequency, and flood buffering.",
+        darkReality: "Submerges pristine Himalayan valley ecosystems, causes involuntary displacement of tribal communities, starves downstream deltas of silt, and produces seasonal methane emissions from drowned vegetation."
+      },
+      hydrogen: {
+        key: 'hydrogen',
+        title: "Green Hydrogen via Water Electrolysis (PEM & Alkaline)",
+        badge: "Target: 5 MMT/yr by 2030 | ₹19,744 Cr Outlay",
+        image: "https://images.unsplash.com/photo-1558441719-8b489c63f7d1?auto=format&fit=crop&w=1000&q=80",
+        physics: "Direct current from solar or wind splits demineralized water (2H₂O → 2H₂ + O₂) inside Polymer Electrolyte Membrane (PEM) or alkaline electrolyzers with zero direct carbon emissions.",
+        causes: "Heavy industry decarbonization where direct electricity cannot work: primary steel blast furnaces, ammonia fertilizer plants, and long-haul shipping.",
+        effects: "Direct replacement of imported volatile LNG and coking coal with domestically generated industrial feedstocks.",
+        darkReality: "Consumes 9 to 11 liters of ultra-pure freshwater per kg of H₂, risking resource conflicts in drought-prone regions. Round-trip round efficiency is modest (60-70%), requiring massive electricity headroom."
+      },
+      biomass: {
+        key: 'biomass',
+        title: "Bioenergy, Agricultural Biomass & Compressed Bio-Gas (CBG)",
+        badge: "Installed: ~10.8 GW | Biomass Potential: 28 GW",
+        image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80",
+        physics: "Anaerobic microbial digestion converts agricultural stubble, sugarcane press mud, and dung into purified biomethane (CH₄ >90%) compressed for automotive and thermal usage under SATAT.",
+        causes: "Rampant winter agricultural stubble burning (parali) causing severe respiratory health hazards in northern India.",
+        effects: "Reduces imported LPG and diesel demand, provides rural farmers with additional revenue streams, and produces rich bio-fertilizer slurry.",
+        darkReality: "Logistical friction in consolidating dispersed rural residue. Improper boiler combustion emits localized PM2.5 if electrostatic precipitators fail. Directly competes with livestock fodder."
+      },
+      geothermal: {
+        key: 'geothermal',
+        title: "Geothermal & Marine/Tidal Kinetic Energy",
+        badge: "Exploratory Stage | Puga Valley (Ladakh) & Gulf of Cambay",
+        image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1000&q=80",
+        physics: "Hydrothermal steam drawn from tectonic faults spins closed-cycle binary turbines. Tidal currents rotate bidirectional underwater marine hydro-turbines.",
+        causes: "Extreme sub-zero winter isolation in Ladakh where diesel freight is blocked by snow and solar panels operate at reduced efficiency.",
+        effects: "Provides constant, weather-independent 24/7 baseload power with a minimal surface footprint.",
+        darkReality: "High upfront capital expenditure and exploratory drilling risks. Potential subterranean degassing of corrosive hydrogen sulfide (H₂S). Tidal barrages can disrupt estuarine mudflats."
+      }
+    };
+
+    function selectResource(key) {
+      document.querySelectorAll('.res-tab').forEach(t => {
+        t.classList.remove('dark:border-cyan-neon', 'dark:text-white', 'border-cyan-600', 'text-cyan-800');
+        t.classList.add('text-adaptive-muted');
+      });
+      const currentTab = document.getElementById(`tab-${key}`);
+      if (currentTab) {
+        currentTab.classList.add(isDarkMode ? 'dark:border-cyan-neon' : 'border-cyan-600', isDarkMode ? 'dark:text-white' : 'text-cyan-800');
+        currentTab.classList.remove('text-adaptive-muted');
+      }
+
+      const r = resourceData[key];
+      const box = document.getElementById('resourceDetailBox');
+
+      box.innerHTML = `
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-5">
+            <div class="img-zoom-wrap h-64 mb-4 border dark:border-cyan-neon/30 border-slate-300 bg-slate-900">
+              <img src="${r.image}" alt="${r.title}" 
+                   onerror="handleImgError(this, '${r.key}');"
+                   class="w-full h-full object-cover img-zoom">
+            </div>
+            <div class="inline-block px-3 py-1 rounded-full inner-well border text-[11px] font-mono dark:text-cyan-neon text-cyan-700 mb-2 font-bold">
+              ${r.badge}
+            </div>
+            <h3 class="text-2xl font-display font-bold text-adaptive-head mb-2">${r.title}</h3>
+            <p class="text-xs text-adaptive-body leading-relaxed font-sans">${r.physics}</p>
+          </div>
+
+          <div class="lg:col-span-7 space-y-4">
+            <div class="p-4 rounded-2xl inner-well border">
+              <h4 class="text-xs font-mono font-bold dark:text-cyan-neon text-cyan-600 uppercase mb-1 flex items-center gap-1.5">
+                <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
+                <span>Why We Deploy: Systemic Drivers & Causes</span>
+              </h4>
+              <p class="text-xs sm:text-sm text-adaptive-body leading-relaxed">${r.causes}</p>
+            </div>
+
+            <div class="p-4 rounded-2xl inner-well border">
+              <h4 class="text-xs font-mono font-bold dark:text-emerald-bright text-emerald-600 uppercase mb-1 flex items-center gap-1.5">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+                <span>Direct Positive Socio-Economic Effects</span>
+              </h4>
+              <p class="text-xs sm:text-sm text-adaptive-body leading-relaxed">${r.effects}</p>
+            </div>
+
+            <div class="p-4 rounded-2xl border border-rose-500/30 dark:bg-rose-950/20 bg-rose-50">
+              <h4 class="text-xs font-mono font-bold text-rose-500 uppercase mb-1 flex items-center gap-1.5">
+                <i data-lucide="alert-octagon" class="w-3.5 h-3.5"></i>
+                <span>Dark Realities, Land Encroachment & Ecological Exploitation</span>
+              </h4>
+              <p class="text-xs sm:text-sm dark:text-rose-200/90 text-rose-900 leading-relaxed">${r.darkReality}</p>
+            </div>
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    selectResource('solar');
+
+    // CHART.JS INITIALIZATIONS
+    function initializeCharts() {
+      const textColor = isDarkMode ? '#94a3b8' : '#475569';
+      const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.06)';
+      const accentCyan = isDarkMode ? '#00f0ff' : '#0284c7';
+      const bgGradient = isDarkMode ? 'rgba(0, 240, 255, 0.12)' : 'rgba(2, 132, 199, 0.12)';
+
+      // 1. Capacity Line Chart
+      const capCtx = document.getElementById('capacityChart').getContext('2d');
+      window.capChart = new Chart(capCtx, {
+        type: 'line',
+        data: {
+          labels: ['2014', '2016', '2018', '2020', '2022', '2024', '2026', '2030 (Goal)'],
+          datasets: [{
+            label: 'Non-Fossil Capacity (GW)',
+            data: [35, 46, 70, 90, 119, 150, 205, 500],
+            borderColor: accentCyan,
+            backgroundColor: bgGradient,
+            fill: true,
+            borderWidth: 3,
+            tension: 0.35,
+            pointBackgroundColor: accentCyan,
+            pointRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: isDarkMode ? '#0a1419' : '#ffffff',
+              titleColor: isDarkMode ? '#ffffff' : '#0f172a',
+              bodyColor: isDarkMode ? '#cbd5e1' : '#334155',
+              borderColor: accentCyan,
+              borderWidth: 1,
+              callbacks: {
+                label: function(c) { return `${c.parsed.y} GW Installed`; }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: gridColor },
+              ticks: { color: textColor, font: { family: 'Space Grotesk', size: 10 } }
+            },
+            y: {
+              grid: { color: gridColor },
+              ticks: { 
+                color: textColor,
+                font: { family: 'Space Grotesk', size: 10 },
+                callback: function(v) { return v + ' GW'; }
+              }
+            }
+          }
+        }
+      });
+
+      // 2. Generation Mix Doughnut Chart
+      const mixCtx = document.getElementById('generationMixChart').getContext('2d');
+      window.mixChart = new Chart(mixCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Thermal Coal & Lignite', 'Solar PV', 'Wind', 'Large Hydro', 'Nuclear', 'Biomass / Other'],
+          datasets: [{
+            data: [54, 19, 10, 11, 2, 4],
+            backgroundColor: [
+              isDarkMode ? '#1e293b' : '#64748b',
+              isDarkMode ? '#00f0ff' : '#0284c7',
+              isDarkMode ? '#10b981' : '#059669',
+              '#38bdf8',
+              '#a855f7',
+              '#f59e0b'
+            ],
+            borderColor: isDarkMode ? '#060d10' : '#ffffff',
+            borderWidth: 2,
+            hoverOffset: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '68%',
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                color: textColor,
+                font: { family: 'Plus Jakarta Sans', size: 10 },
+                padding: 12,
+                boxWidth: 10
+              }
+            },
+            tooltip: {
+              backgroundColor: isDarkMode ? '#0a1419' : '#ffffff',
+              titleColor: isDarkMode ? '#ffffff' : '#0f172a',
+              bodyColor: isDarkMode ? '#cbd5e1' : '#334155',
+              borderColor: isDarkMode ? '#10b981' : '#059669',
+              borderWidth: 1,
+              callbacks: {
+                label: function(c) { return `${c.label}: ${c.parsed}% Share`; }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    function updateChartThemes() {
+      if (!window.capChart || !window.mixChart) return;
+      
+      const textColor = isDarkMode ? '#94a3b8' : '#475569';
+      const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.06)';
+      const accentCyan = isDarkMode ? '#00f0ff' : '#0284c7';
+      const bgGradient = isDarkMode ? 'rgba(0, 240, 255, 0.12)' : 'rgba(2, 132, 199, 0.12)';
+
+      window.capChart.data.datasets[0].borderColor = accentCyan;
+      window.capChart.data.datasets[0].pointBackgroundColor = accentCyan;
+      window.capChart.data.datasets[0].backgroundColor = bgGradient;
+      window.capChart.options.scales.x.grid.color = gridColor;
+      window.capChart.options.scales.x.ticks.color = textColor;
+      window.capChart.options.scales.y.grid.color = gridColor;
+      window.capChart.options.scales.y.ticks.color = textColor;
+      window.capChart.update();
+
+      window.mixChart.data.datasets[0].borderColor = isDarkMode ? '#060d10' : '#ffffff';
+      window.mixChart.data.datasets[0].backgroundColor[0] = isDarkMode ? '#1e293b' : '#64748b';
+      window.mixChart.data.datasets[0].backgroundColor[1] = isDarkMode ? '#00f0ff' : '#0284c7';
+      window.mixChart.data.datasets[0].backgroundColor[2] = isDarkMode ? '#10b981' : '#059669';
+      window.mixChart.options.plugins.legend.labels.color = textColor;
+      window.mixChart.update();
+    }
+
+    // DYNAMIC SOLAR CALCULATOR LOGIC
+    const billSlider = document.getElementById('billSlider');
+    const tariffSlider = document.getElementById('tariffSlider');
+    const billVal = document.getElementById('billVal');
+    const tariffVal = document.getElementById('tariffVal');
+
+    function calculateSolar() {
+      const bill = parseFloat(billSlider.value);
+      const tariff = parseFloat(tariffSlider.value);
+
+      billVal.innerText = bill.toLocaleString('en-IN');
+      tariffVal.innerText = tariff.toFixed(2);
+
+      const monthlyUnits = bill / tariff;
+      const dailyUnits = monthlyUnits / 30;
+      const systemKw = Math.max(1, (dailyUnits / 4.0)).toFixed(1);
+      const roofArea = Math.round(systemKw * 100);
+
+      const annualUnits = Math.round(systemKw * 4.0 * 365);
+      const annualSavings = Math.round(annualUnits * tariff * 0.90);
+      const savings25Years = ((annualSavings * 25) / 100000).toFixed(1);
+
+      const annualCo2Tons = (annualUnits * 0.82) / 1000;
+      const lifetimeCo2 = Math.round(annualCo2Tons * 25);
+      const treesEquivalent = Math.round(lifetimeCo2 * 45);
+
+      let subsidyText = "Eligible for ₹30,000 subsidy (1 kW).";
+      if (systemKw >= 3) {
+        subsidyText = "Eligible for max ₹78,000 Direct Benefit Transfer subsidy (3+ kW).";
+      } else if (systemKw >= 2) {
+        subsidyText = "Eligible for ₹60,000 Direct Benefit Transfer subsidy (2 kW).";
+      }
+
+      document.getElementById('outKw').innerText = `${systemKw} kW`;
+      document.getElementById('outArea').innerText = `~${roofArea} sq.ft roof`;
+      document.getElementById('outUnits').innerText = annualUnits.toLocaleString('en-IN');
+      document.getElementById('outSavings').innerText = `₹${annualSavings.toLocaleString('en-IN')}`;
+      document.getElementById('out25Savings').innerText = `₹${savings25Years} Lakhs`;
+      document.getElementById('outCo2').innerText = `${lifetimeCo2} Metric Tonnes`;
+      document.getElementById('outTrees').innerText = `~${treesEquivalent.toLocaleString('en-IN')} Trees`;
+      document.getElementById('subsidySummary').innerText = subsidyText;
+    }
+
+    billSlider.addEventListener('input', calculateSolar);
+    tariffSlider.addEventListener('input', calculateSolar);
+    calculateSolar();
+
+    // CITIZEN EXPERIENCE WALL & COMMUNITY FEEDBACK SYSTEM
+    let selectedRating = 5;
+    const feedbacks = [
+      {
+        id: 1,
+        name: "Devendra Singhania",
+        role: "Homeowner",
+        state: "Surat, Gujarat",
+        category: "Subsidies & Portal",
+        rating: 5,
+        time: "3 days ago",
+        verified: true,
+        text: "Applied through PM Surya Ghar in late August. Installed a 3.3 kW bifacial system. The net-meter was installed by DGVCL within 18 days, and the ₹78,000 central subsidy hit my SBI account directly 22 days later. My monthly bill dropped from ₹4,200 to ₹180 fixed charges!"
+      },
+      {
+        id: 2,
+        name: "Kavitha Murugesan",
+        role: "Small Business Owner",
+        state: "Coimbatore, Tamil Nadu",
+        category: "Rooftop Solar",
+        rating: 5,
+        time: "1 week ago",
+        verified: true,
+        text: "We installed an 8 kW solar plant on our small auto-parts workshop roof. With high commercial unit rates in Tamil Nadu (₹11/unit), our monthly operating overhead fell by ~₹19,000. It paid for itself in less than 3.2 years, plus 40% depreciation tax write-off."
+      },
+      {
+        id: 3,
+        name: "Balbir Singh Yadav",
+        role: "Farmer",
+        state: "Alwar, Rajasthan",
+        category: "Rural & Agrivoltaics",
+        rating: 5,
+        time: "2 weeks ago",
+        verified: true,
+        text: "Swapped my diesel irrigation pump with a 7.5 HP solar pump under PM-KUSUM. I used to spend ₹9,000 every month on diesel drums during the mustard sowing season. Now the daytime sun runs the borewell for free with zero noise."
+      },
+      {
+        id: 4,
+        name: "Rohan Chatterjee",
+        role: "Solar Engineer",
+        state: "Pune, Maharashtra",
+        category: "DISCOM & Net-Metering",
+        rating: 4,
+        time: "3 weeks ago",
+        verified: true,
+        text: "As an installer with over 40 residential setups in Pune, the PM Surya Ghar portal has streamlined approvals significantly. However, DISCOM bi-directional net-meter stock shortages still cause a 2 to 3 week bottleneck in some rural distribution circles."
+      },
+      {
+        id: 5,
+        name: "Pooja Deshmukh",
+        role: "Apartment Tenant",
+        state: "Bengaluru, Karnataka",
+        category: "Suggestions & Challenges",
+        rating: 4,
+        time: "1 month ago",
+        verified: false,
+        text: "Renting makes rooftop solar difficult, but our 120-flat society in Whitefield passed a resolution to install a 40 kW common-meter solar system for elevators and basement EV chargers. Our maintenance charges decreased by 30%!"
+      }
+    ];
+
+    function setRating(val) {
+      selectedRating = val;
+      const stars = document.querySelectorAll('#starPicker .star-btn i');
+      stars.forEach((s, idx) => {
+        if (idx < val) {
+          s.setAttribute('class', 'w-6 h-6 fill-amber-400 text-amber-400');
+        } else {
+          s.setAttribute('class', 'w-6 h-6 text-slate-400');
+        }
+      });
+      document.getElementById('ratingScoreText').innerText = `${val}.0 / 5.0`;
+    }
+
+    function renderFeedbacks(filter = 'all') {
+      const container = document.getElementById('feedbackStream');
+      const filtered = filter === 'all' ? feedbacks : feedbacks.filter(f => f.category === filter);
+
+      container.innerHTML = '';
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="p-8 text-center glass-panel rounded-2xl text-adaptive-muted text-xs font-mono">No community reviews in this category yet. Be the first to share your experience!</div>`;
+        return;
+      }
+
+      filtered.forEach(item => {
+        let starsHtml = '';
+        for (let i = 0; i < 5; i++) {
+          starsHtml += `<i data-lucide="star" class="w-3.5 h-3.5 ${i < item.rating ? 'fill-amber-400 text-amber-400' : 'text-slate-500'}"></i>`;
+        }
+
+        const card = document.createElement('div');
+        card.className = "glass-panel p-5 sm:p-6 rounded-2xl border transition-all dark:border-void-700 border-slate-300";
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl inner-well border flex items-center justify-center font-display font-bold text-sm dark:text-cyan-neon text-cyan-700">
+                ${item.name.charAt(0)}
+              </div>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <h4 class="text-sm font-display font-bold text-adaptive-head">${item.name}</h4>
+                  ${item.verified ? '<span class="text-[9px] px-1.5 py-0.2 rounded font-mono font-bold uppercase dark:bg-emerald-950 dark:text-emerald-bright bg-emerald-100 text-emerald-800 border dark:border-emerald-neon/30 border-emerald-300">Verified Citizen</span>' : ''}
+                </div>
+                <div class="text-[11px] text-adaptive-muted font-mono">${item.role} • ${item.state}</div>
+              </div>
+            </div>
+            <div class="text-right">
+              <div class="flex items-center space-x-0.5 justify-end mb-1">${starsHtml}</div>
+              <span class="text-[10px] font-mono text-adaptive-muted">${item.time}</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <span class="inline-block text-[10px] font-mono px-2 py-0.5 rounded inner-well border dark:text-cyan-neon text-cyan-600 mb-2">${item.category}</span>
+            <p class="text-xs sm:text-sm text-adaptive-body leading-relaxed">${item.text}</p>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+      lucide.createIcons();
+    }
+
+    function filterFeedbacks(cat) {
+      document.querySelectorAll('.fb-filter').forEach(b => {
+        b.classList.remove('active', 'dark:bg-cyan-neon', 'dark:text-void-950', 'bg-cyan-600', 'text-white');
+        b.classList.add('text-adaptive-muted', 'inner-well');
+      });
+      event.target.classList.add('active', isDarkMode ? 'dark:bg-cyan-neon' : 'bg-cyan-600', isDarkMode ? 'dark:text-void-950' : 'text-white');
+      event.target.classList.remove('text-adaptive-muted');
+      renderFeedbacks(cat);
+    }
+
+    function handleFeedbackSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('fbName').value.trim();
+      const role = document.getElementById('fbRole').value;
+      const state = document.getElementById('fbState').value.trim();
+      const category = document.getElementById('fbCategory').value;
+      const comment = document.getElementById('fbComment').value.trim();
+
+      if (!name || !comment) return;
+
+      const newFeedback = {
+        id: Date.now(),
+        name: name,
+        role: role,
+        state: state,
+        category: category,
+        rating: selectedRating,
+        time: "Just now",
+        verified: true,
+        text: comment
+      };
+
+      feedbacks.unshift(newFeedback);
+      renderFeedbacks('all');
+
+      // Update feedback count
+      const countEl = document.getElementById('totalReviewsCount');
+      if (countEl) {
+        countEl.innerText = "1,429+";
+      }
+
+      // Reset form
+      document.getElementById('feedbackForm').reset();
+      setRating(5);
+
+      confetti({
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+
+    renderFeedbacks('all');
+
+    // INTERACTIVE CLEAN ENERGY IQ QUIZ
+    const quizQuestions = [
+      {
+        q: "What is India's national non-fossil capacity target committed under the COP26 Panchamrit pledge for the year 2030?",
+        options: ["350 GW", "450 GW", "500 GW", "750 GW"],
+        answer: 2,
+        explanation: "Correct! At COP26 in Glasgow, India pledged to augment its non-fossil electricity capacity to 500 GW by 2030."
+      },
+      {
+        q: "Which ecological conflict emerged at the Bhadla and Thar solar power clusters in Rajasthan?",
+        options: [
+          "River valley submergence",
+          "Transmission line collision with the endangered Great Indian Bustard",
+          "Coral reef bleaching",
+          "Underground coal fire ignition"
+        ],
+        answer: 1,
+        explanation: "Correct! High-voltage transmission lines crossing the Thar desert led to fatal collisions with the critically endangered Great Indian Bustard (GIB), sparking Supreme Court undergrounding interventions."
+      },
+      {
+        q: "What is the primary grid challenge denoted by the 'Duck Curve' phenomenon?",
+        options: [
+          "Low wind turbine availability in summer",
+          "Midday solar over-generation followed by a steep evening demand ramp after sunset",
+          "Corrosion in offshore marine cables",
+          "Voltage drops caused by lightning"
+        ],
+        answer: 1,
+        explanation: "Correct! The Duck Curve represents midday belly over-generation followed by a sudden steep evening ramp, which demands flexible BESS or Pumped Storage Hydropower."
+      },
+      {
+        q: "What is the core mandate of the PM Surya Ghar: Muft Bijli Yojana launched with a ₹75,021 Cr outlay?",
+        options: [
+          "Electrifying commercial airports",
+          "Installing rooftop solar on 1 Crore (10 Million) residential households",
+          "Subsidizing coal washing plants",
+          "Building nuclear micro-reactors"
+        ],
+        answer: 1,
+        explanation: "Correct! PM Surya Ghar provides central capital subsidies of up to ₹78,000 to enable 1 Crore households to install rooftop solar systems and access free electricity units."
+      }
+    ];
+
+    let currentQ = 0;
+    let quizScore = 0;
+    let answered = false;
+
+    function renderQuestion() {
+      answered = false;
+      const data = quizQuestions[currentQ];
+      document.getElementById('quizProgressText').innerText = `Question ${currentQ + 1} of ${quizQuestions.length}`;
+      document.getElementById('quizProgressBar').style.width = `${((currentQ + 1) / quizQuestions.length) * 100}%`;
+      document.getElementById('quizQuestion').innerText = data.q;
+      
+      const optContainer = document.getElementById('quizOptions');
+      optContainer.innerHTML = '';
+
+      data.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = "w-full text-left p-4 rounded-xl glass-panel border text-xs sm:text-sm text-adaptive-head hover:border-cyan-500 transition-all flex items-center justify-between";
+        btn.innerHTML = `<span>${opt}</span><i data-lucide="circle" class="w-4 h-4 text-adaptive-muted"></i>`;
+        btn.onclick = () => selectQuizAnswer(idx, btn);
+        optContainer.appendChild(btn);
+      });
+
+      document.getElementById('quizExplanation').classList.add('hidden');
+      document.getElementById('quizNextBtn').classList.add('hidden');
+      lucide.createIcons();
+    }
+
+    function selectQuizAnswer(selectedIndex, clickedBtn) {
+      if (answered) return;
+      answered = true;
+
+      const data = quizQuestions[currentQ];
+      const buttons = document.querySelectorAll('#quizOptions button');
+
+      if (selectedIndex === data.answer) {
+        quizScore++;
+        clickedBtn.classList.add('border-emerald-500', 'bg-emerald-500/20');
+        clickedBtn.querySelector('i').setAttribute('data-lucide', 'check-circle');
+      } else {
+        clickedBtn.classList.add('border-rose-500', 'bg-rose-500/20');
+        clickedBtn.querySelector('i').setAttribute('data-lucide', 'x-circle');
+        buttons[data.answer].classList.add('border-emerald-500', 'bg-emerald-500/20');
+      }
+
+      document.getElementById('quizScoreText').innerText = `Score: ${quizScore}`;
+      
+      const expBox = document.getElementById('quizExplanation');
+      expBox.innerText = data.explanation;
+      expBox.classList.remove('hidden');
+
+      const nextBtn = document.getElementById('quizNextBtn');
+      nextBtn.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function nextQuestion() {
+      currentQ++;
+      if (currentQ < quizQuestions.length) {
+        renderQuestion();
+      } else {
+        showQuizCompletion();
+      }
+    }
+
+    function showQuizCompletion() {
+      document.getElementById('quizQuestion').classList.add('hidden');
+      document.getElementById('quizOptions').classList.add('hidden');
+      document.getElementById('quizExplanation').classList.add('hidden');
+      document.getElementById('quizNextBtn').classList.add('hidden');
+      document.getElementById('quizProgressText').innerText = 'Completed';
+
+      const comp = document.getElementById('quizCompletion');
+      comp.classList.remove('hidden');
+      document.getElementById('quizFinalMsg').innerText = `You scored ${quizScore} out of ${quizQuestions.length}. ${
+        quizScore >= 3 ? "Superb mastery of India's clean energy landscape!" : "Good effort! Keep learning about India's clean energy transition."
+      }`;
+
+      confetti({
+        particleCount: 70,
+        spread: 60,
+        origin: { y: 0.6 }
+      });
+      lucide.createIcons();
+    }
+
+    function resetQuiz() {
+      currentQ = 0;
+      quizScore = 0;
+      document.getElementById('quizScoreText').innerText = 'Score: 0';
+      document.getElementById('quizQuestion').classList.remove('hidden');
+      document.getElementById('quizOptions').classList.remove('hidden');
+      document.getElementById('quizCompletion').classList.add('hidden');
+      renderQuestion();
+    }
+
+    renderQuestion();
+
+    // CITIZEN CLIMATE PLEDGE LOGIC
+    function handlePledgeSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('citizenName').value.trim();
+      const state = document.getElementById('citizenState').value;
+
+      if (!name) return;
+
+      document.getElementById('certNameDisplay').innerText = name;
+      document.getElementById('certStateDisplay').innerText = `Jurisdiction: ${state}`;
+      
+      const d = new Date();
+      document.getElementById('certDateDisplay').innerText = `Issued: ${d.toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}`;
+      document.getElementById('certCodeDisplay').innerText = Math.floor(1000 + Math.random() * 9000);
+
+      const certBox = document.getElementById('certificateContainer');
+      certBox.classList.remove('hidden');
+      certBox.scrollIntoView({ behavior: 'smooth' });
+
+      confetti({
+        particleCount: 100,
+        spread: 80,
+        origin: { y: 0.7 }
+      });
+      lucide.createIcons();
+    }
+
+    function copyPledgeId() {
+      const code = document.getElementById('certCodeDisplay').innerText;
+      const text = `IN-RE-PLEDGE-${code}`;
+      
+      const dummy = document.createElement("input");
+      document.body.appendChild(dummy);
+      dummy.value = text;
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+
+      const btnSpan = document.getElementById('copyBtnText');
+      btnSpan.innerText = "Copied to Clipboard!";
+      setTimeout(() => {
+        btnSpan.innerText = "Copy Registry ID";
+      }, 2500);
+    }
+
+    window.addEventListener('load', () => {
+      initializeCharts();
+    });
+  </script>
+</body>
+</html>
